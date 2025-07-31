@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-‎<meta name="description" content="Mounir Banni - Moroccan Hospitality Specialist with years of experience in Riad guest services and tourism.">
+    <meta name="description" content="Mounir Banni - Moroccan Hospitality Specialist with years of experience in Riad guest services and tourism.">
     <title>Mounir Banni - Riad Hospitality Specialist</title>
     
     <!-- Tailwind CSS -->
@@ -29,6 +29,19 @@
             --text-dark: #2d3748;
             --text-light: #718096;
             --bg-light: #faf9f7;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(212, 165, 116, 0.2);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #d4a574;
+            --secondary-color: #2d3748;
+            --accent-color: #f7c778;
+            --text-dark: #f7fafc;
+            --text-light: #cbd5e0;
+            --bg-light: #1a202c;
+            --card-bg: rgba(45, 55, 72, 0.9);
+            --border-color: rgba(212, 165, 116, 0.3);
         }
 
         * {
@@ -37,16 +50,22 @@
             box-sizing: border-box;
         }
 
-html {
-      scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--bg-light);
-            overflow-x: hidden;
+            transition: all 0.3s ease;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
         }
 
         .font-poppins {
@@ -58,16 +77,18 @@ html {
         }
 
         .secondary-gradient {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, #ffffff 100%);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-light) 100%);
         }
 
         .hero-section {
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-light) 100%);
+            background-color: var(--bg-light);
             position: relative;
             overflow: hidden;
-            position: relative;
-            overflow: hidden;
+            padding: 2rem 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
         }
 
         .hero-section::before {
@@ -84,11 +105,11 @@ html {
         .section-divider {
             height: 2px;
             background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
-            margin: 4rem 0;
+            margin: 2rem 0;
         }
 
         .skill-bar {
-            background: #e2e8f0;
+            background: var(--secondary-color);
             height: 8px;
             border-radius: 4px;
             overflow: hidden;
@@ -100,21 +121,31 @@ html {
             background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
             border-radius: 4px;
             transition: width 2s ease-in-out;
+            width: 0;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.8);
+            background: var(--card-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 165, 116, 0.2);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 2rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        [data-theme="dark"] .card {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] .card:hover {
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
         }
 
         .btn-primary {
@@ -188,12 +219,13 @@ html {
         }
 
         .testimonial-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--card-bg);
             border-left: 4px solid var(--primary-color);
             padding: 2rem;
             border-radius: 12px;
             margin-bottom: 2rem;
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .testimonial-card::before {
@@ -206,44 +238,41 @@ html {
             opacity: 0.3;
         }
 
+        .testimonial-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background-color: #ccc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-.testimonial-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
-  background-color: #ccc;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
+        .testimonial-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.3);
+        }
 
-.testimonial-dot.active {
-  background-color: #c1440e; /* اللون البرتقالي المحمر */
-  transform: scale(1.3);
-}
+        .testimonial-nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 9999px;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+            border: none;
+            cursor: pointer;
+        }
 
-
-
-.testimonial-nav-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 9999px;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: #c1440e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  font-size: 1.25rem;
-}
-
-.testimonial-nav-btn:hover {
-  background-color: #c1440e;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-
+        .testimonial-nav-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
 
         .service-icon {
             width: 60px;
@@ -256,25 +285,28 @@ html {
             color: white;
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            flex-shrink: 0; /* منع الانكماش */
-    min-width: 60px; /* عرض أدنى ثابت */
-    min-height: 60px; /* ارتفاع أدنى ثابت */
+            flex-shrink: 0;
+            min-width: 60px;
+            min-height: 60px;
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 2rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .form-input {
             width: 100%;
             padding: 12px;
-            border: 2px solid rgba(212, 165, 116, 0.3);
+            border: 2px solid var(--border-color);
             border-radius: 8px;
             font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
         }
 
         .form-input:focus {
@@ -297,7 +329,7 @@ html {
 
         .progress-circle .progress-ring {
             fill: none;
-            stroke: #e2e8f0;
+            stroke: var(--secondary-color);
             stroke-width: 8;
         }
 
@@ -314,25 +346,143 @@ html {
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--card-bg);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
             transform: translateY(-100%);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .navbar.visible {
             transform: translateY(0);
         }
 
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            transform-origin: left;
+            z-index: 1001;
+            transform: scaleX(0);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 1rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            margin-top: 0.75rem;
+            transition: color 0.2s ease;
+        }
+
+        .toggle-btn:hover {
+            text-decoration: underline;
+            color: var(--accent-color);
+        }
+
+        .responsibilities {
+            list-style: none;
+            margin-top: 1rem;
+            padding-left: 1rem;
+        }
+
+        .responsibilities li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+        }
+
+        .responsibilities li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Section spacing fixes to prevent overlaps */
+        section {
+            padding: 4rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        section:not(.hero-section) {
+            margin-top: 2rem;
+        }
+
+        /* Mobile responsive improvements */
         @media (max-width: 768px) {
             .hero-section {
-                padding: 2rem 1rem;
+                padding: 4rem 1rem;
+                min-height: 90vh;
             }
             
             .card {
-                padding: 1rem;
+                padding: 1.5rem;
             }
             
             .timeline {
@@ -346,205 +496,204 @@ html {
             .timeline-item::before {
                 left: -1rem;
             }
+
+            .floating-element {
+                display: none;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .theme-toggle {
+                bottom: 5rem;
+            }
         }
 
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
-            transform-origin: left;
-            z-index: 1001;
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
 
-        .back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 1rem; /* تم تعديل القيمة من 2rem إلى 1rem لتقليل المسافة من اليمين */
-    background: var(--primary-color);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    box-sizing: border-box; /* تم التأكد من وجود هذه الخاصية لضمان حساب الحجم بشكل صحيح */
-}
+        /* Dark theme specific adjustments */
+        [data-theme="dark"] .hero-section::before {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.05) 0%, rgba(139, 111, 71, 0.05) 100%);
+        }
 
-.back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+        [data-theme="dark"] .skill-bar {
+            background: #2d3748;
+        }
 
-.back-to-top:hover {
-    background: var(--accent-color);
-    transform: translateY(-5px);
-}
+        [data-theme="dark"] .bg-gray-50 {
+            background-color: #2d3748 !important;
+        }
 
-html, body {
-    overflow-x: hidden;
-    max-width: 100vw;
-}
+        [data-theme="dark"] .bg-white {
+            background-color: #374151 !important;
+        }
 
-.floating-element {
-    max-width: 100%;
-}
+        [data-theme="dark"] .text-gray-800 {
+            color: #f7fafc !important;
+        }
 
-.progress-circle,
-.card,
-section,
-.container {
-    max-width: 100%;
-    overflow-x: hidden;
-}
+        [data-theme="dark"] .text-gray-700 {
+            color: #e2e8f0 !important;
+        }
 
-@media (max-width: 768px) {
-  .floating-element {
-    display: none;
-  }
-}
-    @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+        [data-theme="dark"] .text-gray-600 {
+            color: #cbd5e0 !important;
+        }
 
-.animate-bounce {
-  animation: bounce 1s infinite;
-}
-/* زر Show All Responsibilities */ .toggle-btn { background: none; border: none; color: var(--primary-color); font-weight: 600; cursor: pointer; padding: 0; margin-top: 0.75rem; transition: color 0.2s ease; } .toggle-btn:hover { text-decoration: underline; color: var(--accent-color); } /* قائمة المهام */ .responsibilities { list-style: none; margin-top: 1rem; padding-left: 1rem; } .responsibilities li { position: relative; padding-left: 1rem; margin-bottom: 0.5rem; font-size: 0.9375rem; color: var(--text-dark); } .responsibilities li::before { content: '•'; position: absolute; left: 0; color: var(--primary-color); font-weight: bold; }
-    
-</style>  
+        [data-theme="dark"] .text-gray-500 {
+            color: #a0aec0 !important;
+        }
+
+        [data-theme="dark"] .bg-yellow-50,
+        [data-theme="dark"] .bg-red-50,
+        [data-theme="dark"] .bg-blue-50,
+        [data-theme="dark"] .bg-green-50,
+        [data-theme="dark"] .bg-purple-50,
+        [data-theme="dark"] .bg-orange-100,
+        [data-theme="dark"] .bg-yellow-100,
+        [data-theme="dark"] .bg-yellow-200 {
+            background-color: rgba(212, 165, 116, 0.1) !important;
+        }
+
+        /* Footer dark theme */
+        [data-theme="dark"] footer {
+            background-color: #1a202c !important;
+        }
+    </style>  
     
 </head>
 <body>
     <!-- Loading Spinner -->
-<!-- Custom Loader -->
-<div id="loader"
-     style="position: fixed; inset: 0; background-color: white; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-  <i class="fas fa-hotel text-yellow-500 text-6xl mb-4 animate-bounce"></i>
-  <h2 class="text-xl font-semibold text-gray-800">Welcome My Portfolio </h2>
-  <p class="text-sm text-gray-500 mt-2">Authentic Moroccan Experience...</p>
-</div>
+    <div id="loader" style="position: fixed; inset: 0; background-color: var(--bg-light); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease;">
+        <i class="fas fa-hotel text-6xl mb-4 animate-bounce" style="color: var(--primary-color);"></i>
+        <h2 class="text-xl font-semibold" style="color: var(--text-dark);">Welcome to My Portfolio</h2>
+        <p class="text-sm mt-2" style="color: var(--text-light);">Authentic Moroccan Experience...</p>
+    </div>
+
     <!-- Scroll Progress Indicator -->
     <div class="scroll-indicator" id="scrollIndicator"></div>
 
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center">
-      <div class="font-poppins font-bold text-xl text-gray-800">Mounir Banni</div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="font-poppins font-bold text-xl" style="color: var(--text-dark);">Mounir Banni</div>
 
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-6">
-        <a href="#about" class="text-gray-600 hover:text-yellow-600 transition-colors">About</a>
-        <a href="#experience" class="text-gray-600 hover:text-yellow-600 transition-colors">Experience</a>
-        <a href="#skills" class="text-gray-600 hover:text-yellow-600 transition-colors">Skills</a>
-        <a href="#services" class="text-gray-600 hover:text-yellow-600 transition-colors">Services</a>
-        <a href="#contact" class="text-gray-600 hover:text-yellow-600 transition-colors">Contact</a>
-      </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="#about" class="transition-colors" style="color: var(--text-light);" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-light)'">About</a>
+                    <a href="#experience" class="transition-colors" style="color: var(--text-light);" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-light)'">Experience</a>
+                    <a href="#skills" class="transition-colors" style="color: var(--text-light);" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-light)'">Skills</a>
+                    <a href="#services" class="transition-colors" style="color: var(--text-light);" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-light)'">Services</a>
+                    <a href="#contact" class="transition-colors" style="color: var(--text-light);" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-light)'">Contact</a>
+                </div>
 
-      <!-- Mobile Hamburger Button -->
-      <div class="md:hidden">
-        <button id="menuToggle" class="text-gray-800 text-2xl focus:outline-none">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-    </div>
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden">
+                    <button id="menuToggle" class="text-2xl focus:outline-none" style="color: var(--text-dark);">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
-      <a href="#about" class="block text-gray-600 hover:text-yellow-600">About</a>
-      <a href="#experience" class="block text-gray-600 hover:text-yellow-600">Experience</a>
-      <a href="#skills" class="block text-gray-600 hover:text-yellow-600">Skills</a>
-      <a href="#services" class="block text-gray-600 hover:text-yellow-600">Services</a>
-      <a href="#contact" class="block text-gray-600 hover:text-yellow-600">Contact</a>
-    </div>
-  </div>
-</nav>
-
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#about" class="block" style="color: var(--text-light);">About</a>
+                <a href="#experience" class="block" style="color: var(--text-light);">Experience</a>
+                <a href="#skills" class="block" style="color: var(--text-light);">Skills</a>
+                <a href="#services" class="block" style="color: var(--text-light);">Services</a>
+                <a href="#contact" class="block" style="color: var(--text-light);">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero-section flex items-center justify-center px-4 sm:px-6 lg:px-8" id="hero">
         <div class="floating-elements">
             <div class="floating-element absolute top-20 left-20">
-                <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                <i class="fas fa-star text-2xl" style="color: var(--primary-color);"></i>
             </div>
             <div class="floating-element absolute top-40 right-32">
-                <i class="fas fa-heart text-red-400 text-xl"></i>
+                <i class="fas fa-heart text-xl" style="color: #ef4444;"></i>
             </div>
             <div class="floating-element absolute bottom-32 left-40">
-                <i class="fas fa-home text-blue-400 text-xl"></i>
+                <i class="fas fa-home text-xl" style="color: #3b82f6;"></i>
             </div>
         </div>
         
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
             <div data-aos="fade-right" data-aos-duration="1000">
-                <h1 class="font-poppins text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
+                <h1 class="font-poppins text-5xl lg:text-6xl font-bold mb-4" style="color: var(--text-dark);">
                     Mounir Banni
                 </h1>
                 <h2 class="text-2xl lg:text-3xl font-medium mb-6" style="color: var(--primary-color);">
                     Riad Hospitality Specialist
                 </h2>
-                <p class="text-lg text-gray-700 leading-relaxed mb-8 max-w-2xl">
-  "I make every guest feel at home – with authentic Moroccan hospitality and world-class professionalism"
-</p>
+                <p class="text-lg leading-relaxed mb-8 max-w-2xl" style="color: var(--text-light);">
+                    "I make every guest feel at home – with authentic Moroccan hospitality and world-class professionalism"
+                </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <button class="btn-primary px-8 py-3 text-lg" onclick="scrollToSection('contact')">
                         Get In Touch
                     </button>
-                    <button style="border-radius: 20px;" class="border-2 border-yellow-600 text-yellow-600 px-8 py-3 font-semibold hover:bg-yellow-600 hover:text-white transition-all duration-300" onclick="scrollToSection('about')">
-    Learn More
-</button>
+                    <button style="border-radius: 20px; border: 2px solid var(--primary-color); color: var(--primary-color);" class="px-8 py-3 font-semibold transition-all duration-300" onclick="scrollToSection('about')" onmouseover="this.style.backgroundColor='var(--primary-color)'; this.style.color='white'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--primary-color)'">
+                        Learn More
+                    </button>
                 </div>
             </div>
             
             <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">  
-    <div class="relative">  
-        <div class="w-80 h-80 lg:w-96 lg:h-96 mx-auto rounded-full bg-gradient-to-br from-yellow-50 to-yellow-50 flex items-center justify-center shadow-2xl">  
-            <div class="w-72 h-72 lg:w-88 lg:h-88 rounded-full overflow-hidden bg-white flex items-center justify-center">
-                <img src="Mounir Bani.webp" alt="Mounir Banni" class="object-cover w-full h-full rounded-full" />
-            </div>  
-        </div>  
-    </div>  
-</div>
+                <div class="relative">  
+                    <div class="w-80 h-80 lg:w-96 lg:h-96 mx-auto rounded-full flex items-center justify-center shadow-2xl" style="background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-light) 100%);">  
+                        <div class="w-72 h-72 lg:w-88 lg:h-88 rounded-full overflow-hidden bg-white flex items-center justify-center">
+                            <div class="w-full h-full rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                                <i class="fas fa-user text-6xl text-gray-500"></i>
+                            </div>
+                        </div>  
+                    </div>  
+                </div>  
+            </div>
         </div>
     </section>
-
 
     <!-- About Section -->
     <section id="about" class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">About Me</h2>
+                <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">About Me</h2>
                 <div class="section-divider"></div>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div class="card" data-aos="fade-right">
-                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    <p class="text-lg mb-6 leading-relaxed" style="color: var(--text-light);">
                         A dedicated hospitality professional specializing in the unique operational dynamics and guest experiences of Moroccan riads. My hands-on experience in front desk management and guest relations has provided a strong foundation, which I continuously build upon by analyzing guest needs and operational workflows to enhance service delivery.
                     </p>
-                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    <p class="text-lg mb-6 leading-relaxed" style="color: var(--text-light);">
                         My training in Hotel and Restaurant Management, combined with practical experience serving diverse international clientele, has equipped me with strong cross-cultural communication skills and a detail-oriented approach. I am driven by the challenge of delivering authentic, high-impact hospitality experiences.
                     </p>
-                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                    <p class="text-lg mb-6 leading-relaxed" style="color: var(--text-light);">
                         "I thrive in roles where I can contribute meaningfully, learn rapidly, and help create memorable stays through attentive service and efficient operations."
                     </p>
-                    <div class="flex items-center text-gray-600 mb-4">
-                        <i class="fas fa-map-marker-alt text-yellow-600 mr-2"></i>
+                    <div class="flex items-center mb-4" style="color: var(--text-light);">
+                        <i class="fas fa-map-marker-alt mr-2" style="color: var(--primary-color);"></i>
                         <span>Based in Marrakech, Morocco</span>
                     </div>
                 </div>
@@ -552,21 +701,21 @@ section,
                 <div class="space-y-6" data-aos="fade-left">
                     <!-- Languages -->
                     <div class="card">
-                        <h3 class="font-poppins text-xl font-semibold mb-4 text-gray-800">
-                            <i class="fas fa-language text-yellow-600 mr-2"></i>
+                        <h3 class="font-poppins text-xl font-semibold mb-4" style="color: var(--text-dark);">
+                            <i class="fas fa-language mr-2" style="color: var(--primary-color);"></i>
                             Languages
                         </h3>
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <span>Arabic</span>
+                                <span style="color: var(--text-dark);">Arabic</span>
                                 <span class="text-green-600 font-medium">Fluent</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span>English</span>
+                                <span style="color: var(--text-dark);">English</span>
                                 <span class="text-green-600 font-medium">Fluent</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span>French</span>
+                                <span style="color: var(--text-dark);">French</span>
                                 <span class="text-blue-600 font-medium">Basic</span>
                             </div>
                         </div>
@@ -574,29 +723,29 @@ section,
                     
                     <!-- Specializations -->
                     <div class="card">
-                        <h3 class="font-poppins text-xl font-semibold mb-4 text-gray-800">
-                            <i class="fas fa-star text-yellow-600 mr-2"></i>
+                        <h3 class="font-poppins text-xl font-semibold mb-4" style="color: var(--text-dark);">
+                            <i class="fas fa-star mr-2" style="color: var(--primary-color);"></i>
                             Specializations
                         </h3>
                         <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-yellow-50 px-3 py-2 rounded-lg text-center">Guest Reception</div>
-                            <div class="bg-yellow-50 px-3 py-2 rounded-lg text-center">SM Assistant</div>
-                            <div class="bg-yellow-50 px-3 py-2 rounded-lg text-center">Night Security</div>
-                            <div class="bg-yellow-50 px-3 py-2 rounded-lg text-center">Tour Support</div>
+                            <div class="px-3 py-2 rounded-lg text-center" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">Guest Reception</div>
+                            <div class="px-3 py-2 rounded-lg text-center" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">SM Assistant</div>
+                            <div class="px-3 py-2 rounded-lg text-center" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">Night Security</div>
+                            <div class="px-3 py-2 rounded-lg text-center" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">Tour Support</div>
                         </div>
                     </div>
                     
                     <!-- Values -->
                     <div class="card">
-                        <h3 class="font-poppins text-xl font-semibold mb-4 text-gray-800">
-                            <i class="fas fa-heart text-yellow-600 mr-2"></i>
+                        <h3 class="font-poppins text-xl font-semibold mb-4" style="color: var(--text-dark);">
+                            <i class="fas fa-heart mr-2" style="color: var(--primary-color);"></i>
                             Values
                         </h3>
                         <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-red-50 px-3 py-2 rounded-lg text-center">Respect</div>
-                            <div class="bg-blue-50 px-3 py-2 rounded-lg text-center">Politeness</div>
-                            <div class="bg-green-50 px-3 py-2 rounded-lg text-center">Hospitality</div>
-                            <div class="bg-yellow-50 px-3 py-2 rounded-lg text-center">Smile</div>
+                            <div class="px-3 py-2 rounded-lg text-center" style="background-color: rgba(239, 68, 68, 0.1); color: var(--text-dark);">Respect</div>
+                            <div class="px-3 py-2 rounded-lg text-center" style="background-color: rgba(59, 130, 246, 0.1); color: var(--text-dark);">Politeness</div>
+                            <div class="px-3 py-2 rounded-lg text-center" style="background-color: rgba(34, 197, 94, 0.1); color: var(--text-dark);">Hospitality</div>
+                            <div class="px-3 py-2 rounded-lg text-center" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">Smile</div>
                         </div>
                     </div>
                 </div>
@@ -604,144 +753,139 @@ section,
         </div>
     </section>
 
-   <!-- Experience Section --><section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">My Experience</h2>
-      <div class="section-divider"></div>
-    </div><div class="timeline space-y-6" data-aos="fade-up">
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: var(--secondary-color);">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">My Experience</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="timeline space-y-6" data-aos="fade-up">
+                <!-- Experience 1 -->
+                <div class="timeline-item card">
+                    <div class="flex items-center font-semibold text-lg mb-1" style="color: #c2410c;">
+                        Receptionist & Customer Service
+                    </div>
+                    <div class="flex items-center text-sm mb-1" style="color: var(--text-light);">
+                        <i class="fas fa-building mr-2"></i> Riad Azoulay · Part-time
+                    </div>
+                    <div class="flex items-center text-sm mb-1" style="color: var(--primary-color);">
+                        <i class="fas fa-calendar-alt mr-2"></i> 1 Year 9 Months 
+                    </div>
+                    <div class="flex items-center text-sm mb-3" style="color: var(--text-light);">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Marrakech-Safi, Morocco
+                    </div>
+                    <p style="color: var(--text-light);">Managed guest check-ins and check-outs, ensuring a smooth and welcoming arrival process</p>
+                    <button class="toggle-btn text-sm font-semibold mt-2 focus:outline-none">
+                        Show All Responsibilities
+                    </button>
+                    <ul class="responsibilities mt-3 text-sm space-y-2 hidden" style="color: var(--text-light);">
+                        <li>Assisted guests with bookings, special requests, and customized services</li>
+                        <li>Provided recommendations for local attractions, restaurants, and experiences</li>
+                        <li>Delivered friendly and personalized service, making guests feel at home</li>
+                        <li>Provided personalized concierge services based on guest needs, contributing to an estimated 25% increase in ancillary service bookings</li>
+                    </ul>
+                </div>
 
-  <!-- Experience 1 -->
-  <div class="timeline-item bg-white rounded-xl shadow-sm p-6">
-    <div class="flex items-center text-orange-700 font-semibold text-lg mb-1">
-      <i class=""></i>
-      Receptionist &amp; Customer Service
-    </div>
-    <div class="flex items-center text-gray-600 text-sm mb-1">
-      <i class="fas fa-building mr-2"></i> Riad Azoulay · Part-time
-    </div>
-    <div class="flex items-center text-yellow-600 text-sm mb-1">
-      <i class="fas fa-calendar-alt mr-2"></i> 1 Year 9 Months 
-    </div>
-    <div class="flex items-center text-gray-600 text-sm mb-3">
-      <i class="fas fa-map-marker-alt mr-2"></i> Marrakech-Safi, Morocco
-    </div>
-    <p class="text-gray-700">Managed guest check-ins and check-outs, ensuring a smooth and welcoming arrival process</p>
-    <button class="toggle-btn text-sm text-orange-600 font-semibold mt-2 focus:outline-none">
-      Show All Responsibilities
-    </button>
-    <ul class="responsibilities mt-3 text-gray-700 text-sm space-y-2 hidden">
-      <li>Assisted guests with bookings, special requests, and customized services</li>
-      <li>Provided recommendations for local attractions, restaurants, and experiences</li>
-      <li>Delivered friendly and personalized service, making guests feel at home</li>
-      <li>Provided personalized concierge services based on guest needs, contributing to an estimated 25% increase in ancillary service bookings</li>
-    </ul>
-  </div>
+                <!-- Experience 2 -->
+                <div class="timeline-item card">
+                    <div class="flex items-center font-semibold text-lg mb-1" style="color: #c2410c;">
+                        Multitask Hospitality Assistant
+                    </div>
+                    <div class="flex items-center text-sm mb-1" style="color: var(--text-light);">
+                        <i class="fas fa-building mr-2"></i> Riad El Jadid · Full-time
+                    </div>
+                    <div class="flex items-center text-sm mb-1" style="color: var(--primary-color);">
+                        <i class="fas fa-calendar-alt mr-2"></i> 9 Months 
+                    </div>
+                    <div class="flex items-center text-sm mb-3" style="color: var(--text-light);">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Marrakech-Safi, Morocco
+                    </div>
+                    <p style="color: var(--text-light);">Welcomed and checked in guests, handled bookings efficiently</p>
+                    <button class="toggle-btn text-sm font-semibold mt-2 focus:outline-none">
+                        Show All Responsibilities
+                    </button>
+                    <ul class="responsibilities mt-3 text-sm space-y-2 hidden" style="color: var(--text-light);">
+                        <li>Prepared and served traditional Moroccan breakfasts</li>
+                        <li>Maintained cleanliness in guest areas and assisted in housekeeping tasks</li>
+                        <li>Supported kitchen staff in preparing meals for guests</li>
+                        <li>Assisted guests during their stay with local guidance and practical needs</li>
+                    </ul>
+                </div>
 
-  <!-- Experience 2 -->
-  <div class="timeline-item bg-white rounded-xl shadow-sm p-6">
-    <div class="flex items-center text-orange-700 font-semibold text-lg mb-1">
-      <i class=""></i>
-      Multitask Hospitality Assistant
+                <!-- Experience 3 -->
+                <div class="timeline-item card">
+                    <div class="flex items-center font-semibold text-lg mb-1" style="color: #c2410c;">
+                        Night Shift Responsible
+                    </div>
+                    <div class="flex items-center text-sm mb-1" style="color: var(--text-light);">
+                        <i class="fas fa-building mr-2"></i> Riad Hadika Maria · Part-time
+                    </div>
+                    <div class="flex items-center text-sm mb-1" style="color: var(--primary-color);">
+                        <i class="fas fa-calendar-alt mr-2"></i> 2 Years 6 Months
+                    </div>
+                    <div class="flex items-center text-sm mb-3" style="color: var(--text-light);">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Marrakech-Safi, Morocco
+                    </div>
+                    <p style="color: var(--text-light);">Responsible for the riad during nighttime operations</p>
+                    <button class="toggle-btn text-sm font-semibold mt-2 focus:outline-none">
+                        Show All Responsibilities
+                    </button>
+                    <ul class="responsibilities mt-3 text-sm space-y-2 hidden" style="color: var(--text-light);">
+                        <li>Ensured safety and security of guests overnight</li>
+                        <li>Handled late check-ins and early check-outs</li>
+                        <li>Monitored overnight maintenance issues</li>
+                        <li>Provided emergency support and guest assistance when needed</li>
+                    </ul>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="timeline-item card">
+                    <div class="flex items-center font-semibold text-lg mb-1" style="color: #c2410c;">
+                        Guest Engagement & Online Operations Assistant 
+                    </div>
+                    <div class="flex items-center text-sm mb-1" style="color: var(--text-light);">
+                        <i class="fas fa-building mr-2"></i> Riad Dar Dada · Remotely 
+                    </div>
+                    <div class="flex items-center text-sm mb-1" style="color: var(--primary-color);">
+                        <i class="fas fa-calendar-alt mr-2"></i> 9 Months
+                    </div>
+                    <div class="flex items-center text-sm mb-3" style="color: var(--text-light);">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Marrakech-Safi, Morocco
+                    </div>
+                    <p style="color: var(--text-light);">Maintained and updated the riad's official website with current photos, offers, and guest information.</p>
+                    <button class="toggle-btn text-sm font-semibold mt-2 focus:outline-none">
+                        Show All Responsibilities
+                    </button>
+                    <ul class="responsibilities mt-3 text-sm space-y-2 hidden" style="color: var(--text-light);">
+                        <li>Managed online booking platforms (e.g., Booking.com, Airbnb, Expedia) to ensure availability, pricing accuracy, and guest communication.</li>
+                        <li>Handled guest inquiries via email, WhatsApp, and social media with fast, friendly, and helpful responses.</li>
+                        <li>Created and scheduled engaging content for the riad's Instagram, Facebook, and Google Business profiles</li>
+                        <li>Designed basic digital promotional materials such as stories, reels, flyers, and visual posts using Canva.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    <div class="flex items-center text-gray-600 text-sm mb-1">
-      <i class="fas fa-building mr-2"></i> Riad El Jadid · Full-time
-    </div>
-    <div class="flex items-center text-yellow-600 text-sm mb-1">
-      <i class="fas fa-calendar-alt mr-2"></i> 9 Months 
-    </div>
-    <div class="flex items-center text-gray-600 text-sm mb-3">
-      <i class="fas fa-map-marker-alt mr-2"></i> Marrakech-Safi, Morocco
-    </div>
-    <p class="text-gray-700">Welcomed and checked in guests, handled bookings efficiently</p>
-    <button class="toggle-btn text-sm text-orange-600 font-semibold mt-2 focus:outline-none">
-      Show All Responsibilities
-    </button>
-    <ul class="responsibilities mt-3 text-gray-700 text-sm space-y-2 hidden">
-      <li>Prepared and served traditional Moroccan breakfasts</li>
-      <li>Maintained cleanliness in guest areas and assisted in housekeeping tasks</li>
-      <li>Supported kitchen staff in preparing meals for guests</li>
-      <li>Assisted guests during their stay with local guidance and practical needs</li>
-    </ul>
-  </div>
-
-  <!-- Experience 3 -->
-  <div class="timeline-item bg-white rounded-xl shadow-sm p-6">
-    <div class="flex items-center text-orange-700 font-semibold text-lg mb-1">
-      <i class=""></i>
-      Night Shift Responsible
-    </div>
-    <div class="flex items-center text-gray-600 text-sm mb-1">
-      <i class="fas fa-building mr-2"></i> Riad Hadika Maria · Part-time
-    </div>
-    <div class="flex items-center text-yellow-600 text-sm mb-1">
-      <i class="fas fa-calendar-alt mr-2"></i> 2 Years 6 Months
-    </div>
-    <div class="flex items-center text-gray-600 text-sm mb-3">
-      <i class="fas fa-map-marker-alt mr-2"></i> Marrakech-Safi, Morocco
-    </div>
-    <p class="text-gray-700">Responsible for the riad during nighttime operations</p>
-    <button class="toggle-btn text-sm text-orange-600 font-semibold mt-2 focus:outline-none">
-      Show All Responsibilities
-    </button>
-    <ul class="responsibilities mt-3 text-gray-700 text-sm space-y-2 hidden">
-      <li>Ensured safety and security of guests overnight</li>
-      <li>Handled late check-ins and early check-outs</li>
-      <li>Monitored overnight maintenance issues</li>
-      <li>Provided emergency support and guest assistance when needed</li>
-    </ul>
-  </div>
-
-    <!-- Experience 4 -->
-  <div class="timeline-item bg-white rounded-xl shadow-sm p-6">
-    <div class="flex items-center text-orange-700 font-semibold text-lg mb-1">
-      <i class=""></i>
-Guest Engagement & Online Operations Assistant 
-    </div>
-    <div class="flex items-center text-gray-600 text-sm mb-1">
-      <i class="fas fa-building mr-2"></i> Riad Dar Dada · Remotely 
-    </div>
-    <div class="flex items-center text-yellow-600 text-sm mb-1">
-      <i class="fas fa-calendar-alt mr-2"></i> 9 Months
-    </div>
-    <div class="flex items-center text-gray-600 text-sm mb-3">
-      <i class="fas fa-map-marker-alt mr-2"></i> Marrakech-Safi, Morocco
-    </div>
-    <p class="text-gray-700">Maintained and updated the riad’s official website with current photos, offers, and guest information.</p>
-    <button class="toggle-btn text-sm text-orange-600 font-semibold mt-2 focus:outline-none">
-      Show All Responsibilities
-    </button>
-    <ul class="responsibilities mt-3 text-gray-700 text-sm space-y-2 hidden">
-      <li>Managed online booking platforms (e.g., Booking.com, Airbnb, Expedia) to ensure availability, pricing accuracy, and guest communication.</li>
-      <li>Handled guest inquiries via email, WhatsApp, and social media with fast, friendly, and helpful responses.</li>
-      <li>Created and scheduled engaging content for the riad’s Instagram, Facebook, and Google Business profiles</li>
-      <li>Designed basic digital promotional materials such as stories, reels, flyers, and visual posts using Canva.</li>
-    </ul>
-  </div>
-
-</div>
-
-  </div>
-</section>
+    </section>
 
     <!-- Skills Section -->
-    <div data-aos="fade-up">
     <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">Professional Skills</h2>
+                <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">Professional Skills</h2>
                 <div class="section-divider"></div>
-                <p class="text-lg text-gray-600">Comprehensive skill set developed through hands-on experience in Moroccan hospitality industry</p>
+                <p class="text-lg" style="color: var(--text-light);">Comprehensive skill set developed through hands-on experience in Moroccan hospitality industry</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card" data-aos="fade-right">
-                    <h3 class="font-poppins text-xl font-semibold mb-6 text-gray-800">Professional Skills</h3>
+                    <h3 class="font-poppins text-xl font-semibold mb-6" style="color: var(--text-dark);">Professional Skills</h3>
                     <div class="space-y-6">
                         <div class="skill-item">
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">High-Quality Guest Service</span>
-                                <span class="text-yellow-600 font-semibold">95%</span>
+                                <span class="font-medium" style="color: var(--text-dark);">High-Quality Guest Service</span>
+                                <span class="font-semibold" style="color: var(--primary-color);">95%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="95%"></div>
@@ -750,8 +894,8 @@ Guest Engagement & Online Operations Assistant
                         
                         <div class="skill-item">
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Front Desk & Reservation Handling</span>
-                                <span class="text-yellow-600 font-semibold">90%</span>
+                                <span class="font-medium" style="color: var(--text-dark);">Front Desk & Reservation Handling</span>
+                                <span class="font-semibold" style="color: var(--primary-color);">90%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="90%"></div>
@@ -760,8 +904,8 @@ Guest Engagement & Online Operations Assistant
                         
                         <div class="skill-item">
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Multilingual Communication</span>
-                                <span class="text-yellow-600 font-semibold">85%</span>
+                                <span class="font-medium" style="color: var(--text-dark);">Multilingual Communication</span>
+                                <span class="font-semibold" style="color: var(--primary-color);">85%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="85%"></div>
@@ -770,8 +914,8 @@ Guest Engagement & Online Operations Assistant
                         
                         <div class="skill-item">
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Cultural Hosting & Local Knowledge</span>
-                                <span class="text-yellow-600 font-semibold">92%</span>
+                                <span class="font-medium" style="color: var(--text-dark);">Cultural Hosting & Local Knowledge</span>
+                                <span class="font-semibold" style="color: var(--primary-color);">92%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="92%"></div>
@@ -781,12 +925,12 @@ Guest Engagement & Online Operations Assistant
                 </div>
                 
                 <div class="card" data-aos="fade-left">
-                    <h3 class="font-poppins text-xl font-semibold mb-6 text-gray-800">Additional Skills</h3>
+                    <h3 class="font-poppins text-xl font-semibold mb-6" style="color: var(--text-dark);">Additional Skills</h3>
                     <div class="space-y-6">
                         <div class="skill-item">
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Social Media Management</span>
-                                <span class="text-yellow-600 font-semibold">97%</span>
+                                <span class="font-medium" style="color: var(--text-dark);">Social Media Management</span>
+                                <span class="font-semibold" style="color: var(--primary-color);">97%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="97%"></div>
@@ -795,8 +939,8 @@ Guest Engagement & Online Operations Assistant
                         
                         <div class="skill-item">
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Digital Marketing & Promotion</span>
-                                <span class="text-yellow-600 font-semibold">85%</span>
+                                <span class="font-medium" style="color: var(--text-dark);">Digital Marketing & Promotion</span>
+                                <span class="font-semibold" style="color: var(--primary-color);">85%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="85%"></div>
@@ -805,8 +949,8 @@ Guest Engagement & Online Operations Assistant
                         
                         <div class="skill-item">
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Guest Review Management</span>
-                                <span class="text-yellow-600 font-semibold">87%</span>
+                                <span class="font-medium" style="color: var(--text-dark);">Guest Review Management</span>
+                                <span class="font-semibold" style="color: var(--primary-color);">87%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="87%"></div>
@@ -815,8 +959,8 @@ Guest Engagement & Online Operations Assistant
                         
                         <div class="skill-item">
                             <div class="flex justify-between mb-2">
-                                <span class="font-medium">Website & Content Management</span>
-                                <span class="text-yellow-600 font-semibold">99%</span>
+                                <span class="font-medium" style="color: var(--text-dark);">Website & Content Management</span>
+                                <span class="font-semibold" style="color: var(--primary-color);">99%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="99%"></div>
@@ -825,162 +969,156 @@ Guest Engagement & Online Operations Assistant
                     </div>
                 </div>
             </div>
-             <!-- Core Competencies -->
+            
+            <!-- Core Competencies -->
             <div class="mt-16" data-aos="fade-up">
-                <h3 class="font-poppins text-2xl font-semibold mb-8 text-center text-gray-800">Core Competencies</h3>
+                <h3 class="font-poppins text-2xl font-semibold mb-8 text-center" style="color: var(--text-dark);">Core Competencies</h3>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                     <div class="card text-center py-6">
-                        <i class="fas fa-users text-yellow-600 text-2xl mb-3"></i>
-                        <p class="font-medium">Teamwork & Collaboration</p>
+                        <i class="fas fa-users text-2xl mb-3" style="color: var(--primary-color);"></i>
+                        <p class="font-medium" style="color: var(--text-dark);">Teamwork & Collaboration</p>
                     </div>
                     <div class="card text-center py-6">
-                        <i class="fas fa-eye text-yellow-600 text-2xl mb-3"></i>
-                        <p class="font-medium">Attention to Detail</p>
+                        <i class="fas fa-eye text-2xl mb-3" style="color: var(--primary-color);"></i>
+                        <p class="font-medium" style="color: var(--text-dark);">Attention to Detail</p>
                     </div>
                     <div class="card text-center py-6">
-                        <i class="fas fa-globe text-yellow-600 text-2xl mb-3"></i>
-                        <p class="font-medium">Cultural Sensitivity</p>
+                        <i class="fas fa-globe text-2xl mb-3" style="color: var(--primary-color);"></i>
+                        <p class="font-medium" style="color: var(--text-dark);">Cultural Sensitivity</p>
                     </div>
                     <div class="card text-center py-6">
-                        <i class="fas fa-concierge-bell text-yellow-600 text-2xl mb-3"></i>
-                        <p class="font-medium">Concierge Services</p>
+                        <i class="fas fa-concierge-bell text-2xl mb-3" style="color: var(--primary-color);"></i>
+                        <p class="font-medium" style="color: var(--text-dark);">Concierge Services</p>
                     </div>
                     <div class="card text-center py-6">
-                        <i class="fas fa-calendar-alt text-yellow-600 text-2xl mb-3"></i>
-                        <p class="font-medium">Reservation Management</p>
+                        <i class="fas fa-calendar-alt text-2xl mb-3" style="color: var(--primary-color);"></i>
+                        <p class="font-medium" style="color: var(--text-dark);">Reservation Management</p>
                     </div>
                     <div class="card text-center py-6">
-                        <i class="fas fa-exclamation-triangle text-yellow-600 text-2xl mb-3"></i>
-                        <p class="font-medium">Emergency Response</p>
+                        <i class="fas fa-exclamation-triangle text-2xl mb-3" style="color: var(--primary-color);"></i>
+                        <p class="font-medium" style="color: var(--text-dark);">Emergency Response</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-  ‎<!-- Certifications Section -->
-<section class="py-20 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">
-        Education 
-      </h2>
-      ‎<div class="section-divider"></div>
-      <p class="text-lg text-gray-600">
-        Formal education and specialized training in hospitality management and guest services
-      </p>
-    </div>
+    <!-- Education Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: var(--secondary-color);">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">Education</h2>
+                <div class="section-divider"></div>
+                <p class="text-lg" style="color: var(--text-light);">Formal education and specialized training in hospitality management and guest services</p>
+            </div>
 
-    <div class="space-y-8">
-      <!-- Card 1 -->
-      <div class="bg-white rounded-xl shadow-md p-6" data-aos="fade-up">
-        <div class="flex items-start gap-4">
-          <div class="text-orange-500 text-3xl">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 leading-snug">
-              Vocational Qualification Certificate
-            </h3>
-            <p class="text-base text-red-700 font-medium mb-1">Development Skills Hotel Tourism</p>
-            <div class="flex items-center text-sm text-gray-500 mb-1">
-              <i class="fas fa-calendar-alt mr-2"></i>
-              May 2022 - Jun 2023
-            </div>
-            <div class="flex items-center text-sm text-yellow-600 font-medium mb-2">
-              <i class="fas fa-star mr-2"></i>
-              Grade: Good
-            </div>
-            <p class="text-sm text-gray-700">
-              Professional training in hotel and tourism services, with a focus on front office operations, guest relations, and Moroccan hospitality standards. Acquired hands-on experience in reception, room reservation management, and high-end guest service tailored for riads and boutique hotels. Emphasized guest satisfaction, cultural sensitivity, and personalized service delivery.
-            </p>
-          </div>
-        </div>
-      </div>
+            <div class="space-y-8">
+                <!-- Education Card 1 -->
+                <div class="card" data-aos="fade-up">
+                    <div class="flex items-start gap-4">
+                        <div class="text-3xl" style="color: #ea580c;">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold leading-snug" style="color: var(--text-dark);">
+                                Vocational Qualification Certificate
+                            </h3>
+                            <p class="text-base font-medium mb-1" style="color: #dc2626;">Development Skills Hotel Tourism</p>
+                            <div class="flex items-center text-sm mb-1" style="color: var(--text-light);">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                May 2022 - Jun 2023
+                            </div>
+                            <div class="flex items-center text-sm font-medium mb-2" style="color: var(--primary-color);">
+                                <i class="fas fa-star mr-2"></i>
+                                Grade: Good
+                            </div>
+                            <p class="text-sm" style="color: var(--text-light);">
+                                Professional training in hotel and tourism services, with a focus on front office operations, guest relations, and Moroccan hospitality standards. Acquired hands-on experience in reception, room reservation management, and high-end guest service tailored for riads and boutique hotels.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Card 2 -->
-      <div class="bg-white rounded-xl shadow-md p-6" data-aos="fade-up">
-        <div class="flex items-start gap-4">
-          <div class="text-orange-500 text-3xl">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 leading-snug">
-              Full Stack Developer Diploma 
-            </h3>
-            <p class="text-base text-red-700 font-medium mb-1">Atlantic Institute Center</p>
-            <div class="flex items-center text-sm text-gray-500 mb-1">
-              <i class="fas fa-calendar-alt mr-2"></i>
-              Feb 2020 - Dec 2023
-            </div>
-            <div class="flex items-center text-sm text-yellow-600 font-medium mb-2">
-              <i class="fas fa-star mr-2"></i>
-              Grade: Excellent
-            </div>
-            <p class="text-sm text-gray-700">
-              Completed intensive training in full stack development, including foundational programming, web technologies, and database handling. Gained practical knowledge in HTML, CSS, JavaScript, and back-end integration. Developed dynamic websites and applications, and strengthened both technical and project collaboration skills.
-            </p>
-          </div>
-        </div>
-      </div>
+                <!-- Education Card 2 -->
+                <div class="card" data-aos="fade-up">
+                    <div class="flex items-start gap-4">
+                        <div class="text-3xl" style="color: #ea580c;">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold leading-snug" style="color: var(--text-dark);">
+                                Full Stack Developer Diploma 
+                            </h3>
+                            <p class="text-base font-medium mb-1" style="color: #dc2626;">Atlantic Institute Center</p>
+                            <div class="flex items-center text-sm mb-1" style="color: var(--text-light);">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                Feb 2020 - Dec 2023
+                            </div>
+                            <div class="flex items-center text-sm font-medium mb-2" style="color: var(--primary-color);">
+                                <i class="fas fa-star mr-2"></i>
+                                Grade: Excellent
+                            </div>
+                            <p class="text-sm" style="color: var(--text-light);">
+                                Completed intensive training in full stack development, including foundational programming, web technologies, and database handling. Gained practical knowledge in HTML, CSS, JavaScript, and back-end integration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Card 3 -->
-      <div class="bg-white rounded-xl shadow-md p-6" data-aos="fade-up">
-        <div class="flex items-start gap-4">
-          <div class="text-orange-500 text-3xl">
-            <i class="fas fa-certificate"></i>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 leading-snug">
-              Baccalaureate Certificate 
-            </h3>
-            <p class="text-base text-red-700 font-medium mb-1">Fatima Zahraa Mernissi High School</p>
-            <div class="flex items-center text-sm text-gray-500 mb-1">
-              <i class="fas fa-calendar-alt mr-2"></i>
-              Sep 2019 - Jun 2020
+                <!-- Education Card 3 -->
+                <div class="card" data-aos="fade-up">
+                    <div class="flex items-start gap-4">
+                        <div class="text-3xl" style="color: #ea580c;">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold leading-snug" style="color: var(--text-dark);">
+                                Baccalaureate Certificate 
+                            </h3>
+                            <p class="text-base font-medium mb-1" style="color: #dc2626;">Fatima Zahraa Mernissi High School</p>
+                            <div class="flex items-center text-sm mb-1" style="color: var(--text-light);">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                Sep 2019 - Jun 2020
+                            </div>
+                            <div class="flex items-center text-sm font-medium mb-2" style="color: var(--primary-color);">
+                                <i class="fas fa-star mr-2"></i>
+                                Grade: Good 
+                            </div>
+                            <p class="text-sm" style="color: var(--text-light);">
+                                Earned high school diploma with a specialization in Arts and Humanities. Built strong foundations in communication, critical thinking, literature, and cultural studies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center text-sm text-yellow-600 font-medium mb-2">
-              <i class="fas fa-star mr-2"></i>
-              Grade: Good 
-            </div>
-            <p class="text-sm text-gray-700">
-              Earned high school diploma with a specialization in Arts and Humanities. Built strong foundations in communication, critical thinking, literature, and cultural studies. Developed analytical and expressive skills, with a focus on language, history, and social awareness.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-            
             <!-- Additional Training -->
             <div class="mt-16" data-aos="fade-up">
-                <h3 class="font-poppins text-2xl font-semibold mb-8 text-center text-gray-800">Additional Training & Skills Development</h3>
+                <h3 class="font-poppins text-2xl font-semibold mb-8 text-center" style="color: var(--text-dark);">Additional Training & Skills Development</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-shield-alt text-yellow-600 text-xl mb-3"></i>
-                        <h4 class="font-semibold mb-2">Guest Safety & Security Protocols Environment</h4>
+                    <div class="card">
+                        <i class="fas fa-shield-alt text-xl mb-3" style="color: var(--primary-color);"></i>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Guest Safety & Security Protocols Environment</h4>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-heart text-yellow-600 text-xl mb-3"></i>
-                        <h4 class="font-semibold mb-2">Traditional Moroccan Hospitality Standards</h4>
+                    <div class="card">
+                        <i class="fas fa-heart text-xl mb-3" style="color: var(--primary-color);"></i>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Traditional Moroccan Hospitality Standards</h4>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-star text-yellow-600 text-xl mb-3"></i>
-                        <h4 class="font-semibold mb-2">International Guest Service Excellence</h4>
+                    <div class="card">
+                        <i class="fas fa-star text-xl mb-3" style="color: var(--primary-color);"></i>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">International Guest Service Excellence</h4>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-cogs text-yellow-600 text-xl mb-3"></i>
-                        <h4 class="font-semibold mb-2">Handling Manual and Electronic Reservation Systems</h4>
+                    <div class="card">
+                        <i class="fas fa-cogs text-xl mb-3" style="color: var(--primary-color);"></i>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Handling Manual and Electronic Reservation Systems</h4>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-comments text-yellow-600 text-xl mb-3"></i>
-                        <h4 class="font-semibold mb-2">Cross-Cultural Communication Skills in an Intimate Setting</h4>
+                    <div class="card">
+                        <i class="fas fa-comments text-xl mb-3" style="color: var(--primary-color);"></i>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Cross-Cultural Communication Skills in an Intimate Setting</h4>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <i class="fas fa-medkit text-yellow-600 text-xl mb-3"></i>
-                        <h4 class="font-semibold mb-2">First Aid and Emergency Response</h4>
+                    <div class="card">
+                        <i class="fas fa-medkit text-xl mb-3" style="color: var(--primary-color);"></i>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">First Aid and Emergency Response</h4>
                     </div>
                 </div>
             </div>
@@ -991,9 +1129,9 @@ Guest Engagement & Online Operations Assistant
     <section id="services" class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">Services I Offer</h2>
+                <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">Services I Offer</h2>
                 <div class="section-divider"></div>
-                <p class="text-lg text-gray-600">Value-added services that go beyond traditional hospitality roles, reflecting authentic Moroccan hospitality and comprehensive guest care</p>
+                <p class="text-lg" style="color: var(--text-light);">Value-added services that go beyond traditional hospitality roles, reflecting authentic Moroccan hospitality and comprehensive guest care</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1001,8 +1139,8 @@ Guest Engagement & Online Operations Assistant
                     <div class="service-icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Local Tour Tips & Suggestions</h3>
-                    <p class="text-gray-700">
+                    <h3 class="font-poppins text-xl font-semibold mb-3" style="color: var(--text-dark);">Local Tour Tips & Suggestions</h3>
+                    <p style="color: var(--text-light);">
                         Help guests explore Marrakech authentically — from major attractions to local secrets. Share insider knowledge of hidden gems, best visiting times, and cultural experiences.
                     </p>
                 </div>
@@ -1011,8 +1149,8 @@ Guest Engagement & Online Operations Assistant
                     <div class="service-icon">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Food Recommendations</h3>
-                    <p class="text-gray-700">
+                    <h3 class="font-poppins text-xl font-semibold mb-3" style="color: var(--text-dark);">Food Recommendations</h3>
+                    <p style="color: var(--text-light);">
                         Guide guests to trusted, delicious Moroccan food experiences. From traditional tagines to street food adventures, ensuring every meal becomes a memorable cultural journey.
                     </p>
                 </div>
@@ -1021,8 +1159,8 @@ Guest Engagement & Online Operations Assistant
                     <div class="service-icon">
                         <i class="fas fa-shopping-bag"></i>
                     </div>
-                    <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Shopping Assistance</h3>
-                    <p class="text-gray-700">
+                    <h3 class="font-poppins text-xl font-semibold mb-3" style="color: var(--text-dark);">Shopping Assistance</h3>
+                    <p style="color: var(--text-light);">
                         Assist guests in navigating souks, understanding local crafts, and bargaining respectfully. Help identify authentic products and fair prices.
                     </p>
                 </div>
@@ -1031,8 +1169,8 @@ Guest Engagement & Online Operations Assistant
                     <div class="service-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Safety & Awareness</h3>
-                    <p class="text-gray-700">
+                    <h3 class="font-poppins text-xl font-semibold mb-3" style="color: var(--text-dark);">Safety & Awareness</h3>
+                    <p style="color: var(--text-light);">
                         Share calm, friendly advice for safe, confident movement around the city. Provide practical tips for navigating Marrakech while maintaining cultural sensitivity.
                     </p>
                 </div>
@@ -1041,8 +1179,8 @@ Guest Engagement & Online Operations Assistant
                     <div class="service-icon">
                         <i class="fas fa-language"></i>
                     </div>
-                    <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Language Support</h3>
-                    <p class="text-gray-700">
+                    <h3 class="font-poppins text-xl font-semibold mb-3" style="color: var(--text-dark);">Language Support</h3>
+                    <p style="color: var(--text-light);">
                         Bridge communication gaps for guests who don't speak Arabic or French. Facilitate smooth interactions with local vendors, taxi drivers, and service providers.
                     </p>
                 </div>
@@ -1051,8 +1189,8 @@ Guest Engagement & Online Operations Assistant
                     <div class="service-icon">
                         <i class="fas fa-home"></i>
                     </div>
-                    <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Home-like Guest Experience</h3>
-                    <p class="text-gray-700">
+                    <h3 class="font-poppins text-xl font-semibold mb-3" style="color: var(--text-dark);">Home-like Guest Experience</h3>
+                    <p style="color: var(--text-light);">
                         Offer a welcoming atmosphere that makes each guest feel truly at home. Create personalized experiences that reflect Moroccan warmth while meeting international standards.
                     </p>
                 </div>
@@ -1060,8 +1198,8 @@ Guest Engagement & Online Operations Assistant
             
             <!-- Service Features -->
             <div class="mt-16" data-aos="fade-up">
-                <h3 class="font-poppins text-2xl font-semibold mb-8 text-center text-gray-800">Personalized Guest Experience</h3>
-                <p class="text-center text-gray-600 mb-8">Every service is tailored to individual guest preferences and cultural backgrounds, ensuring an authentic Moroccan experience that feels both exotic and comfortable.</p>
+                <h3 class="font-poppins text-2xl font-semibold mb-8 text-center" style="color: var(--text-dark);">Personalized Guest Experience</h3>
+                <p class="text-center mb-8" style="color: var(--text-light);">Every service is tailored to individual guest preferences and cultural backgrounds, ensuring an authentic Moroccan experience that feels both exotic and comfortable.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div class="text-center">
@@ -1071,10 +1209,10 @@ Guest Engagement & Online Operations Assistant
                                 <circle class="progress-bar" cx="60" cy="60" r="52" data-percent="95"></circle>
                             </svg>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-lg font-semibold text-gray-800">95%</span>
+                                <span class="text-lg font-semibold" style="color: var(--text-dark);">95%</span>
                             </div>
                         </div>
-                        <h4 class="font-semibold mb-2">Experience Design</h4>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Experience Design</h4>
                     </div>
                     
                     <div class="text-center">
@@ -1084,10 +1222,10 @@ Guest Engagement & Online Operations Assistant
                                 <circle class="progress-bar" cx="60" cy="60" r="52" data-percent="100"></circle>
                             </svg>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-lg font-semibold text-gray-800">24/7</span>
+                                <span class="text-lg font-semibold" style="color: var(--text-dark);">24/7</span>
                             </div>
                         </div>
-                        <h4 class="font-semibold mb-2">Availability</h4>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Availability</h4>
                     </div>
                     
                     <div class="text-center">
@@ -1097,10 +1235,10 @@ Guest Engagement & Online Operations Assistant
                                 <circle class="progress-bar" cx="60" cy="60" r="52" data-percent="90"></circle>
                             </svg>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-lg font-semibold text-gray-800">90%</span>
+                                <span class="text-lg font-semibold" style="color: var(--text-dark);">90%</span>
                             </div>
                         </div>
-                        <h4 class="font-semibold mb-2">Problem Solving</h4>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Problem Solving</h4>
                     </div>
                     
                     <div class="text-center">
@@ -1110,306 +1248,233 @@ Guest Engagement & Online Operations Assistant
                                 <circle class="progress-bar" cx="60" cy="60" r="52" data-percent="98"></circle>
                             </svg>
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-lg font-semibold text-gray-800">100%</span>
+                                <span class="text-lg font-semibold" style="color: var(--text-dark);">100%</span>
                             </div>
                         </div>
-                        <h4 class="font-semibold mb-2">Personal Touch</h4>
+                        <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Personal Touch</h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Personal Initiatives Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <!-- Testimonials Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: var(--secondary-color);">
+        <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
+            <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">Guest Testimonials</h2>
+            <p class="text-lg" style="color: var(--text-light);">Authentic feedback from international guests who experienced Moroccan hospitality at its finest</p>
+        </div>
+
+        <div class="relative max-w-2xl mx-auto" id="testimonial-slider" data-aos="fade-up">
+            <!-- Testimonial Card -->
+            <div class="testimonial-card text-center" id="testimonial-content">
+                <p class="italic mb-6 leading-relaxed" id="testimonial-text" style="color: var(--text-light);">
+                    "Professional, knowledgeable, and incredibly hospitable. Mounir's assistance with local shopping and cultural experiences made our trip authentic and memorable."
+                </p>
+                <div class="flex flex-col items-center">
+                    <div class="text-3xl mb-2" style="color: var(--primary-color);">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h4 class="font-semibold" id="testimonial-name" style="color: var(--text-dark);">David Chen</h4>
+                    <p class="text-sm" id="testimonial-country" style="color: var(--text-light);">Canada • 6 days</p>
+                    <div class="flex justify-center text-yellow-400 mt-2" id="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-center mt-8 space-x-4">
+                <button onclick="changeTestimonial(-1)" class="testimonial-nav-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="changeTestimonial(1)" class="testimonial-nav-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Dots -->
+            <div class="flex justify-center mt-4 space-x-2" id="testimonial-dots">
+                <!-- Generated dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">Personal Initiatives</h2>
+                <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">Key Achievements</h2>
                 <div class="section-divider"></div>
-                <p class="text-lg text-gray-600">Proactive improvements and innovations that enhance guest experience and operational efficiency</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card" data-aos="fade-right">
-                    <div class="flex items-start space-x-4">
-                        <div class="service-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Created Mini Tourist Guide</h3>
-                            <p class="text-gray-700">
-                                Developed a comprehensive pocket guide featuring hidden gems, local restaurants, and cultural experiences in Marrakech, helping guests discover authentic Morocco beyond typical tourist attractions.
-                            </p>
-                        </div>
-                    </div>
+
+            <div class="card text-center" data-aos="fade-up">
+                <p class="text-lg mb-4" style="color: var(--text-light);">
+                    Proven track record of excellence in hospitality service delivery and guest satisfaction. Demonstrated consistent excellence in delivering outstanding hospitality services, resulting in high guest satisfaction and loyalty.
+                </p>
+                <div class="p-6 rounded-lg mb-8" style="background-color: rgba(212, 165, 116, 0.1);">
+                    <h4 class="font-semibold mb-2" style="color: var(--text-dark);">Recognition & Letters of Thanks</h4>
+                    <p style="color: var(--text-light);">
+                        Received multiple letters of appreciation from guests and management for exceptional service delivery and dedication to hospitality excellence
+                    </p>
                 </div>
                 
-                <div class="card" data-aos="fade-left">
-                    <div class="flex items-start space-x-4">
-                        <div class="service-icon">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Designed VIP Guest Program</h3>
-                            <p class="text-gray-700">
-                                Established a personalized service protocol for returning guests and special occasions, including welcome amenities, preferred room assignments, and customized local experience recommendations.
-                            </p>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold mb-1 count-up" data-count="40" data-suffix="%" style="color: var(--primary-color);">0%</div>
+                        <p class="font-medium" style="color: var(--text-light);">Faster Check-in Process</p>
                     </div>
-                </div>
-                
-                <div class="card" data-aos="fade-right">
-                    <div class="flex items-start space-x-4">
-                        <div class="service-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Improved Check-in Process</h3>
-                            <p class="text-gray-700">
-                                Streamlined the arrival experience by creating a digital welcome package and pre-arrival communication system, reducing check-in time by 40% while enhancing guest satisfaction.
-                            </p>
-                        </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold mb-1 count-up" data-count="25" data-suffix="%" style="color: var(--primary-color);">0%</div>
+                        <p class="font-medium" style="color: var(--text-light);">Increase in Guest Satisfaction</p>
                     </div>
-                </div>
-                
-                <div class="card" data-aos="fade-left">
-  <div class="flex items-start space-x-4">
-    <div class="service-icon">
-      <i class="fas fa-lightbulb"></i>
-    </div>
-    <div>
-      <h3 class="font-poppins text-xl font-semibold mb-3 text-gray-800">Implemented Innovative Guest Feedback System</h3>
-      <p class="text-gray-700">
-        Developed and integrated a digital feedback tool that increased guest response rates by 30%, enabling more effective service improvements and personalized guest experiences.
-      </p>
-    </div>
-  </div>
-</div>
-            </div>
-            
-        
-
-    <!-- Guest Testimonials Section -->
-<section class="py-20 px-4 sm:px-6 lg:px-8 bg-[#fdfaf6]">
-  <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
-    <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">Guest Testimonials</h2>
-    <p class="text-lg text-gray-600">Authentic feedback from international guests who experienced Moroccan hospitality at its finest</p>
-  </div>
-
-  <div class="relative max-w-2xl mx-auto" id="testimonial-slider" data-aos="fade-up">
-    <!-- Testimonial Card -->
-    <div class="testimonial-card text-center" id="testimonial-content">
-      <p class="italic text-gray-700 mb-6 leading-relaxed" id="testimonial-text">
-        "Professional, knowledgeable, and incredibly hospitable. Mounir’s assistance with local shopping and cultural experiences made our trip authentic and memorable."
-      </p>
-      <div class="flex flex-col items-center">
-        <div class="text-orange-500 text-3xl mb-2">
-          <i class="fas fa-user-circle"></i>
-        </div>
-        <h4 class="font-semibold text-gray-800" id="testimonial-name">David Chen</h4>
-        <p class="text-sm text-gray-600" id="testimonial-country">Canada • 6 days</p>
-        <div class="flex justify-center text-yellow-400 mt-2" id="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-      </div>
-    </div>
-
-    <!-- Navigation Buttons -->
-    <div class="flex justify-center mt-8 space-x-4">
-  <button onclick="changeTestimonial(-1)" class="testimonial-nav-btn">
-    <i class="fas fa-chevron-left"></i>
-  </button>
-  <button onclick="changeTestimonial(1)" class="testimonial-nav-btn">
-    <i class="fas fa-chevron-right"></i>
-  </button>
-</div>
-
-    <!-- Dots -->
-    <div class="flex justify-center mt-4 space-x-2" id="testimonial-dots">
-      <!-- generated dynamically -->
-    </div>
-  </div>
-</section>
-            
-            <!-- Key Achievements -->
-<div class="mt-16" data-aos="fade-up">
-    <h3 class="font-poppins text-4xl font-semibold mb-4 text-center text-gray-800">Key Achievements</h3>
-    <div class="card text-center">
-        <p class="text-lg text-gray-700 mb-4">
-            Proven track record of excellence in hospitality service delivery and guest satisfaction
-Demonstrated consistent excellence in delivering outstanding hospitality services, resulting in high guest satisfaction and loyalty.
-        </p>
-        <div class="bg-yellow-50 p-6 rounded-lg mb-8">
-            <h4 class="font-semibold text-gray-800 mb-2">Recognition & Letters of Thanks</h4>
-            <p class="text-gray-600">
-                Received multiple letters of appreciation from guests and management for exceptional service delivery and dedication to hospitality excellence
-            </p>
-        </div>
-        <!-- Moved Initiative Impact here -->
-        <div class="mt-16">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-yellow-600 mb-1 count-up" data-count="40" data-suffix="%">0%</div>
-                    <p class="text-gray-700 font-medium">Faster Check-in Process</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-yellow-600 mb-1 count-up" data-count="25" data-suffix="%">0%</div>
-                    <p class="text-gray-700 font-medium">Increase in Guest Satisfaction</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-yellow-600 mb-1 count-up" data-count="3000" data-prefix="+">+0</div>
-                    <p class="text-gray-700 font-medium">Guests Served</p>
-                </div>
-                <div class="text-center">
-                <div class="text-2xl font-bold text-yellow-600 mb-1 count-up" data-count="100" data-suffix="%">0%</div>
-                    <p class="text-gray-700 font-medium">Improvement In Service Quality</p>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold mb-1 count-up" data-count="3000" data-prefix="+" style="color: var(--primary-color);">+0</div>
+                        <p class="font-medium" style="color: var(--text-light);">Guests Served</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold mb-1 count-up" data-count="100" data-suffix="%" style="color: var(--primary-color);">0%</div>
+                        <p class="font-medium" style="color: var(--text-light);">Improvement In Service Quality</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
     <!-- Availability Section -->
-<section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-  <div class="max-w-7xl mx-auto">
-    <!-- Section Header -->
-    <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">Availability</h2>
-      <div class="section-divider"></div>
-      <p class="text-lg text-gray-600">
-        Flexible scheduling and preferences for hospitality positions in Marrakech and beyond
-      </p>
-    </div>
+    <section class="py-20 px-4 sm:px-6 lg:px-8" style="background-color: var(--secondary-color);">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">Availability</h2>
+                <div class="section-divider"></div>
+                <p class="text-lg" style="color: var(--text-light);">
+                    Flexible scheduling and preferences for hospitality positions in Marrakech and beyond
+                </p>
+            </div>
 
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Work Schedule -->
+                <div class="card p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-poppins text-xl font-semibold mb-4 flex items-center" style="color: var(--text-dark);">
+                        <i class="fas fa-calendar-alt mr-2" style="color: var(--primary-color);"></i> Work Schedule
+                    </h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Full / Part Time 
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Day / Night Shifts
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Weekends Available
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Holiday Periods
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Seasonal Work 
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Work Schedule -->
-      <div class="card bg-gradient-to-br from-yellow-50 to-orange-100 p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="font-poppins text-xl font-semibold mb-4 text-gray-800 flex items-center">
-          <i class="fas fa-calendar-alt text-yellow-600 mr-2"></i> Work Schedule
-        </h3>
-        <div class="space-y-3 text-sm text-gray-700">
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Full / Part Time 
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Day / Night Shifts
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Weekends Available
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Holiday Periods
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Seasonal Work 
-          </div>
-        </div>
-      </div>
+                <!-- Preferred Riad Types -->
+                <div class="card p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-poppins text-xl font-semibold mb-4 flex items-center" style="color: var(--text-dark);">
+                        <i class="fas fa-hotel mr-2" style="color: var(--primary-color);"></i> Preferred Riads
+                    </h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Luxury Riads
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Boutique Riads
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Design-Led Riads
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Desert-Style Riads
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Spa & Wellness Riads
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Preferred Riad Types -->
-      <div class="card bg-gradient-to-br from-yellow-100 to-yellow-200 p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="font-poppins text-xl font-semibold mb-4 text-gray-800 flex items-center">
-          <i class="fas fa-hotel text-yellow-600 mr-2"></i> Preferred Riads
-        </h3>
-        <div class="space-y-3 text-sm text-gray-700">
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-500 mr-2"></i> Luxury Riads
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-500 mr-2"></i> Boutique Riads
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-500 mr-2"></i> Design-Led Riads
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-500 mr-2"></i> Desert-Style Riads
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-500 mr-2"></i> Spa & Wellness Riads
-          </div>
-        </div>
-      </div>
+                <!-- Benefits -->
+                <div class="card p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-poppins text-xl font-semibold mb-4 flex items-center" style="color: var(--text-dark);">
+                        <i class="fas fa-dollar-sign mr-2" style="color: var(--primary-color);"></i> Benefits Rewards
+                    </h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Competitive Salary
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Flexible Scheduling
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Daily Staff Meals
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Skills Development
+                        </div>
+                        <div class="flex items-center px-3 py-2 rounded-lg shadow-sm" style="background-color: rgba(212, 165, 116, 0.1); color: var(--text-dark);">
+                            <i class="fas fa-check mr-2" style="color: var(--primary-color);"></i> Opportunities To Grow
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <!-- Compensation -->
-      <div class="card bg-gradient-to-br from-orange-100 to-red-100 p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
-        <h3 class="font-poppins text-xl font-semibold mb-4 text-gray-800 flex items-center">
-          <i class="fas fa-dollar-sign text-yellow-600 mr-2"></i> Benefits Rewards
-        </h3>
-    
-        <div class="space-y-2 text-sm text-gray-700">
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Competitive Salary
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Flexible Scheduling
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Daily Staff Meals
-          </div>
-<div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Skills Development
-          </div>
-          <div class="flex items-center bg-white/60 px-3 py-2 rounded-lg shadow-sm">
-            <i class="fas fa-check text-yellow-600 mr-2"></i> Opportunities To Grow
-          </div>
-        </div>
-      </div>
-
-    </div> <!-- end grid -->
-  </div>
-</section>
-            
             <!-- Ready to Start -->
             <div class="mt-16" data-aos="fade-up">
                 <div class="card text-center">
-                    <h3 class="font-poppins text-2xl font-semibold mb-4 text-gray-800">Ready to Start Immediately</h3>
-                    <p class="text-gray-700 mb-6">
+                    <h3 class="font-poppins text-2xl font-semibold mb-4" style="color: var(--text-dark);">Ready to Start Immediately</h3>
+                    <p class="mb-6" style="color: var(--text-light);">
                         Flexible, reliable, and committed to delivering exceptional hospitality experiences. Available for immediate placement in the right opportunity.
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <i class="fas fa-play text-green-600 text-2xl mb-2"></i>
-                            <p class="font-semibold">Immediate Start</p>
+                        <div class="p-4 rounded-lg" style="background-color: rgba(34, 197, 94, 0.1);">
+                            <i class="fas fa-play text-2xl mb-2 text-green-600"></i>
+                            <p class="font-semibold" style="color: var(--text-dark);">Immediate Start</p>
                         </div>
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <i class="fas fa-clock text-blue-600 text-2xl mb-2"></i>
-                            <p class="font-semibold">Flexible Schedule</p>
+                        <div class="p-4 rounded-lg" style="background-color: rgba(59, 130, 246, 0.1);">
+                            <i class="fas fa-clock text-2xl mb-2 text-blue-600"></i>
+                            <p class="font-semibold" style="color: var(--text-dark);">Flexible Schedule</p>
                         </div>
-                        <div class="bg-yellow-50 p-4 rounded-lg">
-                            <i class="fas fa-dollar-sign text-yellow-600 text-2xl mb-2"></i>
-                            <p class="font-semibold">Competitive Rates</p>
+                        <div class="p-4 rounded-lg" style="background-color: rgba(212, 165, 116, 0.1);">
+                            <i class="fas fa-dollar-sign text-2xl mb-2" style="color: var(--primary-color);"></i>
+                            <p class="font-semibold" style="color: var(--text-dark);">Competitive Rates</p>
                         </div>
-                        <div class="bg-purple-50 p-4 rounded-lg">
-                            <i class="fas fa-handshake text-purple-600 text-2xl mb-2"></i>
-                            <p class="font-semibold">Long-term Commitment</p>
+                        <div class="p-4 rounded-lg" style="background-color: rgba(147, 51, 234, 0.1);">
+                            <i class="fas fa-handshake text-2xl mb-2 text-purple-600"></i>
+                            <p class="font-semibold" style="color: var(--text-dark);">Long-term Commitment</p>
                         </div>
-                        <div class="bg-red-50 p-4 rounded-lg">
-                            <i class="fas fa-chart-line text-red-600 text-2xl mb-2"></i>
-                            <p class="font-semibold">Professional Growth</p>
+                        <div class="p-4 rounded-lg" style="background-color: rgba(239, 68, 68, 0.1);">
+                            <i class="fas fa-chart-line text-2xl mb-2 text-red-600"></i>
+                            <p class="font-semibold" style="color: var(--text-dark);">Professional Growth</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-                          </section>   
+    </section>
 
-   <!-- Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-poppins text-4xl font-bold text-gray-800 mb-4">Contact Me</h2>
+                <h2 class="font-poppins text-4xl font-bold mb-4" style="color: var(--text-dark);">Contact Me</h2>
                 <div class="section-divider"></div>
-                <p class="text-lg text-gray-600">Ready to discuss hospitality opportunities or answer any questions about my experience and services</p>
+                <p class="text-lg" style="color: var(--text-light);">Ready to discuss hospitality opportunities or answer any questions about my experience and services</p>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Contact Information -->
                 <div data-aos="fade-right">
                     <div class="card">
-                        <h3 class="font-poppins text-2xl font-semibold mb-6 text-gray-800">Get In Touch</h3>
-                        <p class="text-gray-700 mb-8">
+                        <h3 class="font-poppins text-2xl font-semibold mb-6" style="color: var(--text-dark);">Get In Touch</h3>
+                        <p class="text-lg mb-8" style="color: var(--text-light);">
                             I'm always interested in discussing new opportunities in the hospitality industry. Whether you're looking for a dedicated team member or need consultation on Moroccan hospitality standards, I'd love to hear from you.
                         </p>
                         
@@ -1419,9 +1484,9 @@ Demonstrated consistent excellence in delivering outstanding hospitality service
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-gray-800">Location</h4>
-                                    <p class="text-gray-600">Marrakech, Morocco</p>
-                                    <p class="text-sm text-gray-500">Based in the heart of Marrakech with extensive knowledge of the local hospitality scene</p>
+                                    <h4 class="font-semibold" style="color: var(--text-dark);">Location</h4>
+                                    <p style="color: var(--text-light);">Marrakech, Morocco</p>
+                                    <p class="text-sm" style="color: var(--text-light); opacity: 0.8;">Based in the heart of Marrakech with extensive knowledge of the local hospitality scene</p>
                                 </div>
                             </div>
                             
@@ -1430,12 +1495,12 @@ Demonstrated consistent excellence in delivering outstanding hospitality service
                                     <i class="fas fa-phone"></i>
                                 </div>
                                 <div>
-  <h4 class="font-semibold text-gray-800">Phone</h4>
-  <a href="https://wa.me/212705914424" target="_blank" class="text-black-600 hover:underline">
-    +212 7 05 91 44 24
-  </a>
-  <p class="text-sm text-gray-500">WhatsApp available for urgent matters</p>
-</div>
+                                    <h4 class="font-semibold" style="color: var(--text-dark);">Phone</h4>
+                                    <a href="https://wa.me/212705914424" target="_blank" class="hover:underline" style="color: var(--text-light);">
+                                        +212 7 05 91 44 24
+                                    </a>
+                                    <p class="text-sm" style="color: var(--text-light); opacity: 0.8;">WhatsApp available for urgent matters</p>
+                                </div>
                             </div>
                             
                             <div class="flex items-center">
@@ -1443,12 +1508,12 @@ Demonstrated consistent excellence in delivering outstanding hospitality service
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div>
-  <h4 class="font-semibold text-gray-800">Email</h4>
-  <a href="mailto:mounirbanniwork@gmail.com" class="text-black-600 hover:underline">
-    mounirbanniwork@gmail.com
-  </a>
-  <p class="text-sm text-gray-500">Response time: within 24 hours</p>
-</div>
+                                    <h4 class="font-semibold" style="color: var(--text-dark);">Email</h4>
+                                    <a href="mailto:mounirbanniwork@gmail.com" class="hover:underline" style="color: var(--text-light);">
+                                        mounirbanniwork@gmail.com
+                                    </a>
+                                    <p class="text-sm" style="color: var(--text-light); opacity: 0.8;">Response time: within 24 hours</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1457,20 +1522,20 @@ Demonstrated consistent excellence in delivering outstanding hospitality service
                 <!-- Contact Form -->
                 <div data-aos="fade-left">
                     <div class="contact-form">
-                        <h3 class="font-poppins text-2xl font-semibold mb-6 text-gray-800">Send a Message</h3>
+                        <h3 class="font-poppins text-2xl font-semibold mb-6" style="color: var(--text-dark);">Send a Message</h3>
                         <form id="contactForm" class="space-y-6">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-dark);">Name</label>
                                 <input type="text" class="form-input" placeholder="Your full name" required>
                             </div>
                             
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-dark);">Email</label>
                                 <input type="email" class="form-input" placeholder="your.email@example.com" required>
                             </div>
                             
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-dark);">Subject</label>
                                 <select class="form-input" required>
                                     <option value="">Select a subject</option>
                                     <option value="job-inquiry">Job Inquiry</option>
@@ -1481,7 +1546,7 @@ Demonstrated consistent excellence in delivering outstanding hospitality service
                             </div>
                             
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-dark);">Message</label>
                                 <textarea rows="6" class="form-input" placeholder="Tell me about your hospitality needs or questions..." required></textarea>
                             </div>
                             
@@ -1497,22 +1562,22 @@ Demonstrated consistent excellence in delivering outstanding hospitality service
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+    <footer class="py-12 px-4 sm:px-6 lg:px-8" style="background-color: #1f2937; color: white;">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="font-poppins text-xl font-semibold mb-4">Mounir Banni</h3>
-                    <p class="text-gray-300 mb-4">
+                    <p class="mb-4" style="color: #d1d5db;">
                         Riad Hospitality Specialist dedicated to creating authentic Moroccan experiences for international guests.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/mounir.banni.2025" class="text-gray-300 hover:text-yellow-400 transition-colors">
+                        <a href="https://www.facebook.com/mounir.banni.2025" class="transition-colors" style="color: #d1d5db;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='#d1d5db'">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/mounirbanni" class="text-gray-300 hover:text-yellow-400 transition-colors">
+                        <a href="https://www.linkedin.com/in/mounirbanni" class="transition-colors" style="color: #d1d5db;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='#d1d5db'">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.instagram.com/mounirbani" class="text-gray-300 hover:text-yellow-400 transition-colors">
+                        <a href="https://www.instagram.com/mounirbani" class="transition-colors" style="color: #d1d5db;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='#d1d5db'">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
@@ -1520,39 +1585,38 @@ Demonstrated consistent excellence in delivering outstanding hospitality service
                 
                 <div>
                     <h4 class="font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="" class="hover:text-yellow-400 transition-colors">Guest Reception</a></li>
-                        <li><a href="" class="hover:text-yellow-400 transition-colors">Tour Assistance</a></li>
-                        <li><a href="" class="hover:text-yellow-400 transition-colors">Language Support</a></li>
-                        <li><a href="" class="hover:text-yellow-400 transition-colors">Cultural Guidance</a></li>
+                    <ul class="space-y-2" style="color: #d1d5db;">
+                        <li><a href="#services" class="transition-colors" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='#d1d5db'">Guest Reception</a></li>
+                        <li><a href="#services" class="transition-colors" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='#d1d5db'">Tour Assistance</a></li>
+                        <li><a href="#services" class="transition-colors" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='#d1d5db'">Language Support</a></li>
+                        <li><a href="#services" class="transition-colors" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='#d1d5db'">Cultural Guidance</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-semibold mb-4">Contact Info</h4>
-                    <ul class="space-y-2 text-gray-300">
+                    <ul class="space-y-2" style="color: #d1d5db;">
                         <li>
                             <i class="fas fa-map-marker-alt mr-2"></i>
                             Marrakech, Morocco
                         </li>
                         <li>
-                            <li>
-  <i class="fas fa-phone mr-2 text-gray-300"></i>
-  <a href="https://wa.me/212705914424" target="_blank" class="text-gray-300 hover:underline">
-    +212 7 05 91 44 24
-  </a>
-</li>
+                            <i class="fas fa-phone mr-2"></i>
+                            <a href="https://wa.me/212705914424" target="_blank" class="hover:underline">
+                                +212 7 05 91 44 24
+                            </a>
+                        </li>
                         <li>
-  <i class="fas fa-envelope mr-2 text-gray-300"></i>
-  <a href="mailto:mounirbanniwork@gmail.com" class="text-gray-300 hover:underline">
-    mounirbanniwork@gmail.com
-  </a>
-</li>
+                            <i class="fas fa-envelope mr-2"></i>
+                            <a href="mailto:mounirbanniwork@gmail.com" class="hover:underline">
+                                mounirbanniwork@gmail.com
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+            <div class="border-t mt-8 pt-8 text-center" style="border-color: #374151; color: #d1d5db;">
                 <p>&copy; 2025 Mounir Banni. All rights reserved. | Made with heart for authentic Moroccan hospitality</p>
             </div>
         </div>
@@ -1563,383 +1627,359 @@ Demonstrated consistent excellence in delivering outstanding hospitality service
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- فقط استدعِ مكتبة AOS مرة واحدة -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  // === Initialize AOS ===
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100
-  });
+    <!-- AOS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
 
-  // === Helpers ===
-  function scrollToSection(sectionId) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
 
-  // === Smooth scroll for nav links ===
-  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').substring(1);
-      scrollToSection(targetId);
-    });
-  });
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
 
-  // === Navbar behavior, scroll indicator, back to top, floating parallax ===
-  const navbar = document.getElementById('navbar');
-  const scrollIndicator = document.getElementById('scrollIndicator');
-  const backToTop = document.getElementById('backToTop');
-  const floatingElements = document.querySelectorAll('.floating-element');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
 
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-
-    // Navbar visibility
-    if (navbar) {
-      if (scrollY > 100) navbar.classList.add('visible');
-      else navbar.classList.remove('visible');
-    }
-
-    // Scroll Indicator scaleX
-    if (scrollIndicator) {
-      const scrolledPercent = scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-      scrollIndicator.style.transform = `scaleX(${scrolledPercent})`;
-    }
-
-    // Back to top button visibility
-    if (backToTop) {
-      if (scrollY > 500) backToTop.classList.add('visible');
-      else backToTop.classList.remove('visible');
-    }
-
-    // Floating parallax effect
-    floatingElements.forEach((el, i) => {
-      const speed = 0.5 + (i * 0.1);
-      el.style.transform = `translateY(${scrollY * speed}px)`;
-    });
-
-    // Trigger skills animation (previously separate)
-    animateSkills();
-  });
-
-  // === Back to top button click ===
-  if (backToTop) {
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // === Skills progress animation on scroll ===
-  const skillsSection = document.getElementById("skills");
-  let skillsAnimated = false;
-
-  function animateSkills() {
-    if (!skillsSection || skillsAnimated) return;
-
-    const rect = skillsSection.getBoundingClientRect();
-    const screenHeight = window.innerHeight;
-
-    if (rect.top < screenHeight && rect.bottom > 0) {
-      const bars = skillsSection.querySelectorAll(".skill-progress");
-      bars.forEach(bar => {
-        const width = bar.getAttribute("data-width");
-        bar.style.transition = "width 2s ease-in-out";
-        bar.style.width = width;
-      });
-      skillsAnimated = true;
-    }
-  }
-
-  // === Intersection Observer Options ===
-  const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px 0px -100px 0px'
-  };
-
-  // === Circular progress animation ===
-  const circleObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const circle = entry.target.querySelector('.progress-bar');
-        if (!circle) return;
-
-        const percent = +circle.getAttribute('data-percent');
-        const radius = circle.r.baseVal.value;
-        const circumference = 2 * Math.PI * radius;
-        const offset = circumference - (percent / 100) * circumference;
-
-        circle.style.strokeDasharray = circumference;
-        circle.style.strokeDashoffset = offset;
-
-        // لتجنب إعادة التفعيل، إلغاء المراقبة
-        circleObserver.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.progress-circle').forEach(circle => {
-    circleObserver.observe(circle);
-  });
-
-  // === Count-up animation ===
-  function animateNumber(el, target, duration = 2000) {
-    let start = 0;
-    const stepTime = 16; // تقريبا 60fps
-    const increment = target / (duration / stepTime);
-    const prefix = el.getAttribute('data-prefix') || '';
-    const suffix = el.getAttribute('data-suffix') || '';
-
-    function update() {
-      start += increment;
-      if (start < target) {
-        el.textContent = prefix + Math.floor(start) + suffix;
-        requestAnimationFrame(update);
-      } else {
-        el.textContent = prefix + target + suffix;
-      }
-    }
-    requestAnimationFrame(update);
-  }
-
-  const numberObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-count'));
-        if (!el.classList.contains('counted') && !isNaN(target)) {
-          animateNumber(el, target);
-          el.classList.add('counted');
-          numberObserver.unobserve(el); // وقف المراقبة لمنع التكرار
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
         }
-      }
-    });
-  }, { threshold: 0.6 });
 
-  document.querySelectorAll('.count-up').forEach(el => {
-    numberObserver.observe(el);
-  });
+        // Helpers
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
-  // === Skills observer for progress bars (alternative أو إضافي) ===
-  const skillsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const bars = entry.target.querySelectorAll('.skill-progress');
-        bars.forEach(bar => {
-          const width = bar.getAttribute('data-width');
-          bar.style.width = width;
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
         });
-        skillsObserver.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
 
-  document.querySelectorAll('.skill-item').forEach(skill => {
-    skillsObserver.observe(skill);
-  });
+        // Navbar behavior, scroll indicator, back to top
+        const navbar = document.getElementById('navbar');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const backToTop = document.getElementById('backToTop');
+        const floatingElements = document.querySelectorAll('.floating-element');
 
-  // === Contact form simulation ===
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', e => {
-      e.preventDefault();
-      const button = e.target.querySelector('button[type="submit"]');
-      const originalText = button.innerHTML;
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
 
-      button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
-      button.disabled = true;
+            // Navbar visibility
+            if (navbar) {
+                if (scrollY > 100) navbar.classList.add('visible');
+                else navbar.classList.remove('visible');
+            }
 
-      setTimeout(() => {
-        button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
-        button.classList.add('bg-green-600');
-        setTimeout(() => {
-          button.innerHTML = originalText;
-          button.disabled = false;
-          button.classList.remove('bg-green-600');
-          e.target.reset();
-        }, 2000);
-      }, 2000);
-    });
-  }
+            // Scroll Indicator scaleX
+            if (scrollIndicator) {
+                const scrolledPercent = scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+                scrollIndicator.style.transform = `scaleX(${scrolledPercent})`;
+            }
 
-  // === Hero section typewriter effect ===
-  const subtitle = document.querySelector('.hero-section p');
-  if (subtitle) {
-    const text = subtitle.textContent.trim();
-    subtitle.textContent = '';
-    subtitle.style.borderRight = '2px solid var(--primary-color)';
-    let i = 0;
-    function typeWriter() {
-      if (i < text.length) {
-        subtitle.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
-      } else {
-        setTimeout(() => {
-          subtitle.style.borderRight = 'none';
-        }, 1000);
-      }
-    }
-    setTimeout(typeWriter, 1000);
-  }
+            // Back to top button visibility
+            if (backToTop) {
+                if (scrollY > 500) backToTop.classList.add('visible');
+                else backToTop.classList.remove('visible');
+            }
 
-  // === Page load animation ===
-  window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-    const loader = document.getElementById("loader");
-    if (loader) {
-      loader.style.opacity = 1;
-      setTimeout(() => {
-        loader.style.transition = "opacity 0.6s ease";
-        loader.style.opacity = 0;
-        setTimeout(() => {
-          loader.style.display = "none";
-        }, 600);
-      }, 2000);
-    }
-  });
+            // Floating parallax effect
+            floatingElements.forEach((el, i) => {
+                const speed = 0.5 + (i * 0.1);
+                el.style.transform = `translateY(${scrollY * speed}px)`;
+            });
 
-  // === Mobile menu toggle ===
-  const mobileMenuButton = document.querySelector('.mobile-menu-button');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-
-  // === Toggle show/hide responsibilities ===
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".toggle-btn").forEach(btn => {
-      btn.addEventListener("click", function () {
-        const responsibilities = this.nextElementSibling;
-        responsibilities.classList.toggle("hidden");
-        this.textContent = responsibilities.classList.contains("hidden")
-          ? "Show All Responsibilities"
-          : "Show Less";
-      });
-    });
-  });
-
-  // === Testimonials Slider ===
-  const testimonials = [
-    {
-      text: "Professional, knowledgeable, and incredibly hospitable. Mounir’s assistance with local shopping and cultural experiences made our trip authentic and memorable.",
-      name: "David",
-      country: "Canada • 7 Months ",
-      stars: 4.5
-    },
-    {
-      text: "Our first time in Morocco, and Mounir made it unforgettable. He even helped us find great deals in the souk.",
-      name: "Emily",
-      country: "USA • 5 Months",
-      stars: 5
-    },
-    {
-      text: "From the first greeting to the last goodbye, Mounir made us feel like royalty. The best host we've ever had.",
-      name: "Lucas",
-      country: "Germany • 5 Months",
-      stars: 5
-    },
-    {
-      text: "Kind, attentive, and full of helpful advice. Mounir helped us make the most of every moment.",
-      name: "Sophie",
-      country: "France • 3 Months",
-      stars: 4
-    },
-    {
-      text: "What a wonderful experience! Mounir arranged everything perfectly, including day trips and restaurants.",
-      name: "Aliya ",
-      country: "UAE • Less Than A Month",
-      stars: 4
-    },
-    {
-      text: "Highly recommended. His hospitality and smile made our honeymoon extra special.",
-      name: "Marco",
-      country: "Italy • Less Than A Month",
-      stars: 5
-    },
-    {
-      text: "As a solo traveler, I felt completely at ease thanks to Mounir. He even helped me plan safe and enjoyable tours.",
-      name: "Marwa",
-      country: "Morocco • Less Than A Month",
-      stars: 5
-    }
-  ];
-
-  let currentTestimonial = 0;
-
-  function renderTestimonial(index) {
-    const t = testimonials[index];
-    const textEl = document.getElementById("testimonial-text");
-    const nameEl = document.getElementById("testimonial-name");
-    const countryEl = document.getElementById("testimonial-country");
-    const starsEl = document.getElementById("testimonial-stars");
-    const dotsEl = document.getElementById("testimonial-dots");
-
-    if (textEl && nameEl && countryEl && starsEl && dotsEl) {
-      textEl.innerText = `"${t.text}"`;
-      nameEl.innerText = t.name;
-      countryEl.innerText = t.country;
-
-      // Show stars (full and half stars)
-      const fullStars = Math.floor(t.stars);
-      const halfStar = (t.stars % 1) >= 0.5;
-
-      starsEl.innerHTML = '';
-      for (let i = 0; i < fullStars; i++) {
-        starsEl.innerHTML += '<i class="fas fa-star"></i>';
-      }
-      if (halfStar) {
-        starsEl.innerHTML += '<i class="fas fa-star-half-alt"></i>';
-      }
-
-      // Update dots active state
-      Array.from(dotsEl.children).forEach((dot, i) => {
-        dot.classList.toggle("active", i === index);
-      });
-    }
-  }
-
-  function changeTestimonial(dir) {
-    currentTestimonial = (currentTestimonial + dir + testimonials.length) % testimonials.length;
-    renderTestimonial(currentTestimonial);
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const dotContainer = document.getElementById("testimonial-dots");
-
-    if (dotContainer) {
-      testimonials.forEach((_, i) => {
-        const dot = document.createElement("div");
-        dot.className = `testimonial-dot ${i === 0 ? 'active' : ''}`;
-        dot.addEventListener("click", () => {
-          currentTestimonial = i;
-          renderTestimonial(currentTestimonial);
+            // Trigger skills animation
+            animateSkills();
         });
-        dotContainer.appendChild(dot);
-      });
-      renderTestimonial(0);
-    }
 
-    console.log("Mounir Banni Portfolio - All scripts loaded");
-  });
+        // Back to top button click
+        if (backToTop) {
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
-</script>
+        // Skills progress animation on scroll
+        const skillsSection = document.getElementById("skills");
+        let skillsAnimated = false;
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
+        function animateSkills() {
+            if (!skillsSection || skillsAnimated) return;
 
-    menuToggle.addEventListener('click', function () {
-      mobileMenu.classList.toggle('hidden');
-    });
-  });
+            const rect = skillsSection.getBoundingClientRect();
+            const screenHeight = window.innerHeight;
+
+            if (rect.top < screenHeight && rect.bottom > 0) {
+                const bars = skillsSection.querySelectorAll(".skill-progress");
+                bars.forEach(bar => {
+                    const width = bar.getAttribute("data-width");
+                    bar.style.width = width;
+                });
+                skillsAnimated = true;
+            }
+        }
+
+        // Intersection Observer Options
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        // Circular progress animation
+        const circleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const circle = entry.target.querySelector('.progress-bar');
+                    if (!circle) return;
+
+                    const percent = +circle.getAttribute('data-percent');
+                    const radius = circle.r.baseVal.value;
+                    const circumference = 2 * Math.PI * radius;
+                    const offset = circumference - (percent / 100) * circumference;
+
+                    circle.style.strokeDasharray = circumference;
+                    circle.style.strokeDashoffset = offset;
+
+                    circleObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.progress-circle').forEach(circle => {
+            circleObserver.observe(circle);
+        });
+
+        // Count-up animation
+        function animateNumber(el, target, duration = 2000) {
+            let start = 0;
+            const stepTime = 16;
+            const increment = target / (duration / stepTime);
+            const prefix = el.getAttribute('data-prefix') || '';
+            const suffix = el.getAttribute('data-suffix') || '';
+
+            function update() {
+                start += increment;
+                if (start < target) {
+                    el.textContent = prefix + Math.floor(start) + suffix;
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = prefix + target + suffix;
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        const numberObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-count'));
+                    if (!el.classList.contains('counted') && !isNaN(target)) {
+                        animateNumber(el, target);
+                        el.classList.add('counted');
+                        numberObserver.unobserve(el);
+                    }
+                }
+            });
+        }, { threshold: 0.6 });
+
+        document.querySelectorAll('.count-up').forEach(el => {
+            numberObserver.observe(el);
+        });
+
+        // Contact form simulation
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const button = e.target.querySelector('button[type="submit"]');
+                const originalText = button.innerHTML;
+
+                button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+                button.disabled = true;
+
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                    button.classList.add('bg-green-600');
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                        button.classList.remove('bg-green-600');
+                        e.target.reset();
+                    }, 2000);
+                }, 2000);
+            });
+        }
+
+        // Page load animation
+        window.addEventListener('load', () => {
+            const loader = document.getElementById("loader");
+            if (loader) {
+                setTimeout(() => {
+                    loader.style.opacity = 0;
+                    setTimeout(() => {
+                        loader.style.display = "none";
+                    }, 600);
+                }, 2000);
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Toggle show/hide responsibilities
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".toggle-btn").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    const responsibilities = this.nextElementSibling;
+                    responsibilities.classList.toggle("hidden");
+                    this.textContent = responsibilities.classList.contains("hidden")
+                        ? "Show All Responsibilities"
+                        : "Show Less";
+                });
+            });
+        });
+
+        // Testimonials Slider
+        const testimonials = [
+            {
+                text: "Professional, knowledgeable, and incredibly hospitable. Mounir's assistance with local shopping and cultural experiences made our trip authentic and memorable.",
+                name: "David",
+                country: "Canada • 7 Months",
+                stars: 5
+            },
+            {
+                text: "Our first time in Morocco, and Mounir made it unforgettable. He even helped us find great deals in the souk.",
+                name: "Emily",
+                country: "USA • 5 Months",
+                stars: 5
+            },
+            {
+                text: "From the first greeting to the last goodbye, Mounir made us feel like royalty. The best host we've ever had.",
+                name: "Lucas",
+                country: "Germany • 5 Months",
+                stars: 5
+            },
+            {
+                text: "Kind, attentive, and full of helpful advice. Mounir helped us make the most of every moment.",
+                name: "Sophie",
+                country: "France • 3 Months",
+                stars: 4
+            },
+            {
+                text: "What a wonderful experience! Mounir arranged everything perfectly, including day trips and restaurants.",
+                name: "Aliya",
+                country: "UAE • Less Than A Month",
+                stars: 4
+            },
+            {
+                text: "Highly recommended. His hospitality and smile made our honeymoon extra special.",
+                name: "Marco",
+                country: "Italy • Less Than A Month",
+                stars: 5
+            },
+            {
+                text: "As a solo traveler, I felt completely at ease thanks to Mounir. He even helped me plan safe and enjoyable tours.",
+                name: "Marwa",
+                country: "Morocco • Less Than A Month",
+                stars: 5
+            }
+        ];
+
+        let currentTestimonial = 0;
+
+        function renderTestimonial(index) {
+            const t = testimonials[index];
+            const textEl = document.getElementById("testimonial-text");
+            const nameEl = document.getElementById("testimonial-name");
+            const countryEl = document.getElementById("testimonial-country");
+            const starsEl = document.getElementById("testimonial-stars");
+            const dotsEl = document.getElementById("testimonial-dots");
+
+            if (textEl && nameEl && countryEl && starsEl && dotsEl) {
+                textEl.innerText = `"${t.text}"`;
+                nameEl.innerText = t.name;
+                countryEl.innerText = t.country;
+
+                // Show stars
+                const fullStars = Math.floor(t.stars);
+                const halfStar = (t.stars % 1) >= 0.5;
+
+                starsEl.innerHTML = '';
+                for (let i = 0; i < fullStars; i++) {
+                    starsEl.innerHTML += '<i class="fas fa-star"></i>';
+                }
+                if (halfStar) {
+                    starsEl.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+                }
+
+                // Update dots active state
+                Array.from(dotsEl.children).forEach((dot, i) => {
+                    dot.classList.toggle("active", i === index);
+                });
+            }
+        }
+
+        function changeTestimonial(dir) {
+            currentTestimonial = (currentTestimonial + dir + testimonials.length) % testimonials.length;
+            renderTestimonial(currentTestimonial);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const dotContainer = document.getElementById("testimonial-dots");
+
+            if (dotContainer) {
+                testimonials.forEach((_, i) => {
+                    const dot = document.createElement("div");
+                    dot.className = `testimonial-dot ${i === 0 ? 'active' : ''}`;
+                    dot.addEventListener("click", () => {
+                        currentTestimonial = i;
+                        renderTestimonial(currentTestimonial);
+                    });
+                    dotContainer.appendChild(dot);
+                });
+                renderTestimonial(0);
+            }
+        });
+
+        // Auto-advance testimonials
+        setInterval(() => {
+            changeTestimonial(1);
+        }, 8000);
+
+        console.log("Mounir Banni Portfolio - Enhanced with Night Mode - All scripts loaded");
     </script>
 </body>
-                                                                                                               </html>
+</html>
