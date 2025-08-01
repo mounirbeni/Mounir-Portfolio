@@ -60,13 +60,13 @@
             color: var(--text-dark);
             background-color: var(--bg-light);
             transition: all 0.3s ease;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            overflow-x: hidden;
+            -ms-overflow-style: none; /* For IE and Edge */
+            scrollbar-width: none; /* For Firefox */
+            overflow-x: hidden; /* Hide horizontal scrollbar for the entire page */
         }
 
         body::-webkit-scrollbar {
-            display: none;
+            display: none; /* For Chrome, Safari, and Opera */
         }
 
         .font-poppins {
@@ -103,11 +103,7 @@
             z-index: 1;
         }
 
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
-            margin: 2rem 0;
-        }
+        /* Removed .section-divider as per request */
 
         .skill-bar {
             background: var(--secondary-color);
@@ -475,7 +471,8 @@
             position: relative;
             z-index: 1;
             max-width: 100%;
-            overflow-x: hidden;
+            /* Removed overflow-x: hidden; and overflow-y: hidden; from here */
+            /* The body handles overall scrollbars, sections should naturally fit */
         }
 
         section:not(.hero-section) {
@@ -551,7 +548,7 @@
             }
 
             .floating-element {
-                display: none;
+                display: none; /* Hide floating elements on small screens */
             }
 
             section {
@@ -559,19 +556,19 @@
             }
 
             .theme-toggle {
-                bottom: 5rem;
+                bottom: 5rem; /* Adjust position for mobile */
             }
 
             .grid-cols-2 {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack columns on mobile */
             }
 
             .lg\:grid-cols-3, .md\:grid-cols-3 {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack columns on mobile */
             }
 
             .lg\:grid-cols-6 {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
             }
 
             .progress-circle {
@@ -603,7 +600,7 @@
             }
 
             .floating-element {
-                display: none;
+                display: none; /* Hide floating elements on tablet */
             }
 
             section {
@@ -611,31 +608,31 @@
             }
 
             .theme-toggle {
-                bottom: 5rem;
+                bottom: 5rem; /* Adjust position for tablet */
             }
 
             .lg\:grid-cols-2 {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack columns on tablet */
             }
 
             .md\:grid-cols-2 {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack columns on tablet */
             }
 
             .lg\:grid-cols-3 {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack columns on tablet */
             }
 
             .md\:grid-cols-3 {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
             }
 
             .lg\:grid-cols-6 {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, 1fr); /* Three columns on tablet */
             }
 
             .md\:grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
             }
 
             .sm\:flex-row {
@@ -918,7 +915,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <h2 class="font-poppins text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text-dark);">About Me</h2>
-                <div class="section-divider"></div>
+                <!-- Removed section-divider -->
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -998,7 +995,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <h2 class="font-poppins text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text-dark);">My Experience</h2>
-                <div class="section-divider"></div>
+                <!-- Removed section-divider -->
             </div>
             
             <div class="timeline space-y-6" data-aos="fade-up">
@@ -1114,7 +1111,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <h2 class="font-poppins text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text-dark);">Professional Skills</h2>
-                <div class="section-divider"></div>
+                <!-- Removed section-divider -->
                 <p class="text-base sm:text-lg" style="color: var(--text-light);">Comprehensive skill set developed through hands-on experience in Moroccan hospitality industry</p>
             </div>
             
@@ -1248,7 +1245,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <h2 class="font-poppins text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text-dark);">Education</h2>
-                <div class="section-divider"></div>
+                <!-- Removed section-divider -->
                 <p class="text-base sm:text-lg" style="color: var(--text-light);">Formal education and specialized training in hospitality management and guest services</p>
             </div>
 
@@ -1370,7 +1367,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <h2 class="font-poppins text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text-dark);">Services I Offer</h2>
-                <div class="section-divider"></div>
+                <!-- Removed section-divider -->
                 <p class="text-base sm:text-lg" style="color: var(--text-light);">Value-added services that go beyond traditional hospitality roles, reflecting authentic Moroccan hospitality and comprehensive guest care</p>
             </div>
             
@@ -1545,7 +1542,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <h2 class="font-poppins text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text-dark);">Key Achievements</h2>
-                <div class="section-divider"></div>
+                <!-- Removed section-divider -->
             </div>
 
             <div class="card text-center" data-aos="fade-up">
@@ -1586,7 +1583,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <h2 class="font-poppins text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text-dark);">Availability</h2>
-                <div class="section-divider"></div>
+                <!-- Removed section-divider -->
                 <p class="text-base sm:text-lg" style="color: var(--text-light);">
                     Flexible scheduling and preferences for hospitality positions in Marrakech and beyond
                 </p>
@@ -1705,7 +1702,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <h2 class="font-poppins text-3xl sm:text-4xl font-bold mb-4" style="color: var(--text-dark);">Contact Me</h2>
-                <div class="section-divider"></div>
+                <!-- Removed section-divider -->
                 <p class="text-base sm:text-lg" style="color: var(--text-light);">Ready to discuss hospitality opportunities or answer any questions about my experience and services</p>
             </div>
             
@@ -1963,7 +1960,7 @@
                 else backToTop.classList.remove('visible');
             }
 
-            // Floating parallax effect
+            // Floating parallax effect (now hidden on smaller screens via CSS)
             floatingElements.forEach((el, i) => {
                 const speed = 0.5 + (i * 0.1);
                 el.style.transform = `translateY(${scrollY * speed}px)`;
