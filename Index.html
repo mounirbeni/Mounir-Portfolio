@@ -409,7 +409,7 @@
             box-shadow: 0 2px 8px rgba(201, 152, 74, 0.4);
         }
 
-        .back-to-top, .theme-toggle {
+        .theme-toggle {
             position: fixed;
             bottom: 2rem;
             background: var(--gradient-primary);
@@ -427,22 +427,11 @@
             box-shadow: 0 4px 20px rgba(201, 152, 74, 0.4);
         }
 
-        .back-to-top {
-            right: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .theme-toggle {
             left: 2rem;
         }
 
-        .back-to-top:hover, .theme-toggle:hover {
+        .theme-toggle:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 8px 30px rgba(201, 152, 74, 0.5);
         }
@@ -576,9 +565,7 @@
                 padding: 4rem 0;
             }
             
-            .back-to-top {
-                bottom: 5rem;
-            }
+
         }
 
         .stats-card {
@@ -1744,10 +1731,7 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
+
 
     <!-- AOS Script -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -1809,10 +1793,9 @@
             });
         });
 
-        // Navbar behavior, scroll indicator, back to top
+        // Navbar behavior, scroll indicator
         const navbar = document.getElementById('navbar');
         const scrollIndicator = document.getElementById('scrollIndicator');
-        const backToTop = document.getElementById('backToTop');
 
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
@@ -1829,22 +1812,13 @@
                 scrollIndicator.style.transform = `scaleX(${scrolledPercent})`;
             }
 
-            // Back to top button visibility
-            if (backToTop) {
-                if (scrollY > 500) backToTop.classList.add('visible');
-                else backToTop.classList.remove('visible');
-            }
+
 
             // Trigger skills animation
             animateSkills();
         });
 
-        // Back to top button click
-        if (backToTop) {
-            backToTop.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
+
 
         // Skills progress animation on scroll
         const skillsSection = document.getElementById("skills");
